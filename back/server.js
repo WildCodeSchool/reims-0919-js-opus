@@ -17,7 +17,8 @@ app.get('/offer', (req, res) => {
       if (err) {
         res.status(500).send('Error server 500');
       } else {
-        res.json(results);
+       res.json(results);
+        console.log('aaaaaaaa')
       }
     });
   });
