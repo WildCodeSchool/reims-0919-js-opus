@@ -5,8 +5,8 @@ app.listen(8000,()=>console.log('Hello Folks'))
 
 app.get('/', function (req, res) {
     res.send('hello world')
-  });
+});
 
 app.get('/offer', function (req, res) {
-    res.send('Yo tout le monde')
+    res.send('welcome in offer')
 });
