@@ -18,20 +18,19 @@ app.get('/offer', (req, res) => {
         res.status(500).send('Error server 500');
       } else {
        res.json(results);
-        console.log('aaaaaaaa')
       }
     });
   });
 
-//INITIALISATION DELETE ROUTE /////////////////////////////////////////////////
-  // app.delete('/offer/delete', (req, res) => {
-  //   connection.query('delete * from offer where id = ?', (err, results) => {
-  //     if (err) {
-  //       res.status(500).send('Error server 500');
-  //     } else {
-  //      res.json(results);
-  //     }
-  //   });
-  // });  
+// INITIALISATION DELETE ROUTE /////////////////////////////////////////////////
+  app.delete('/offer/delete', (req, res) => {
+    connection.query('delete * from offer where id = ?', (err, results) => {
+      if (err) {
+        res.status(500).send('Error server 500');
+      } else {
+       res.json(results);
+      }
+    });
+  });  
 
 
