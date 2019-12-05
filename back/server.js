@@ -11,7 +11,7 @@ app.listen(port, (err) => {
     // console.log(`Server is listening on ${port}`);
   });
 
-//NCREATION ROUTES /////////////////////////////////////////////////
+//INITIALISATION GET ROUTE /////////////////////////////////////////////////
 app.get('/offer', (req, res) => {
     connection.query('SELECT * from offer', (err, results) => {
       if (err) {
@@ -22,3 +22,16 @@ app.get('/offer', (req, res) => {
       }
     });
   });
+
+//INITIALISATION DELETE ROUTE /////////////////////////////////////////////////
+  // app.delete('/offer/delete', (req, res) => {
+  //   connection.query('delete * from offer where id = ?', (err, results) => {
+  //     if (err) {
+  //       res.status(500).send('Error server 500');
+  //     } else {
+  //      res.json(results);
+  //     }
+  //   });
+  // });  
+
+
