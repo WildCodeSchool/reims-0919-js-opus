@@ -23,8 +23,9 @@ app.get('/offer', (req, res) => {
   });
 
 // INITIALISATION DELETE ROUTE /////////////////////////////////////////////////
-  app.delete('/offer/delete', (req, res) => {
-    connection.query('delete * from offer where id = ?', (err, results) => {
+  app.get('/offer/:id', (req, res) => {
+    const idSearch = req.params.id;
+    connection.query(`SELECT * from offer where id_offer = ?`, [idSearch],(err, results) => {
       if (err) {
         res.status(500).send('Error server 500');
       } else {
