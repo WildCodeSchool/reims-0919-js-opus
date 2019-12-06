@@ -1,15 +1,18 @@
 const connection = require('./conf')
 const express = require("express")
 const app = express()
+const cors = require("cors")
 const port = 8000;
+
+app.use(cors())
 
 // CONNECTION PORT ///////////////////////////////////////////////////
 app.listen(port, (err) => {
-    if (err) {
-      throw new Error('Error listening port ...');
-    }
-    // console.log(`Server is listening on ${port}`);
-  });
+  if (err) {
+    throw new Error('Error listening port ...');
+  }
+  console.log(`Server is listening on ${port}`);
+});
 
 //INITIALISATION GET ROUTE /////////////////////////////////////////////////
 app.get('/offer', (req, res) => {
@@ -23,14 +26,14 @@ app.get('/offer', (req, res) => {
   });
 
 // INITIALISATION DELETE ROUTE /////////////////////////////////////////////////
-  app.delete('/offer/delete', (req, res) => {
-    connection.query('delete * from offer where id = ?', (err, results) => {
-      if (err) {
-        res.status(500).send('Error server 500');
-      } else {
-       res.json(results);
-      }
-    });
-  });  
+app.delete('/offer/delete', (req, res) => {
+  connection.query('delete * from offer where id = ?', (err, results) => {
+    if (err) {
+      res.status(500).send('Error server 500');
+    } else {
+      res.json(results);
+    }
+  });
+});  
 
 
