@@ -1,10 +1,14 @@
 const connection = require('./conf')
 const express = require("express")
+const bodyParser = require('body-parser');
 const app = express()
 const cors = require("cors")
 const port = 8000;
 
 app.use(cors())
+
+app.use(bodyParser.json());// Support JSON-encoded bodies
+app.use(bodyParser.urlencoded({extended: true}));// Support URL-encoded bodies
 
 // CONNECTION PORT ///////////////////////////////////////////////////
 app.listen(port, (err) => {
@@ -37,4 +41,16 @@ app.get('/offer/:id', (req, res) => {
   });
 });  
 
+// POST OFFERS ////////////////////////////////////////////////
+app.post('/offer/add', (req, res) => {
+  const formAdd = req.body;
+  connection.query('INSERT INTO offer VALUES ?', formAdd, (err, results) => {
 
+    if (err) {
+      console.log(err);
+      res.status(500).send("Erreur lors de la sauvegarde d'un fim");
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
