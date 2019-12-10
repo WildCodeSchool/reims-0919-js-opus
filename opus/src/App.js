@@ -16,7 +16,7 @@ class App extends React.Component {
 
   getOffers = () => {
     axios
-      .get("http://localhost:8000/offer")
+      .get("http://localhost:8000/offer/2")
       .then(res => res.data)
       .then(data =>
         this.setState({
