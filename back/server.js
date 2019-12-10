@@ -43,8 +43,22 @@ app.get('/offer/:id', (req, res) => {
 
 // POST OFFERS ////////////////////////////////////////////////
 app.post('/offer/add', (req, res) => {
-  const formAdd = req.body;
-  connection.query('INSERT INTO offer VALUES ?', formAdd, (err, results) => {
+  // const formAdd = req.body;
+  const formAdd ={
+    society_name:'dev-Wild',
+    title:'Local',
+    picture:'aaaaaaaaaaa',
+    price:50,
+    capacity:15,
+    offer_description:'bbbbbbbbbbbbbbb',
+    adress_street:'15 rue barbe',
+    adress_city:'Reims',
+    zip_code:'51100',
+    country:'france'
+  }
+  console.log(formAdd);
+  // connection.query('INSERT INTO offer VALUES ?', [formAdd], (err, results) => {
+    connection.query('INSERT INTO offer(society_name,title,picture,price,capacity,offer_description,adress_street,adress_city,zip_code,country) VALUES (?)', formAdd, (err, results) => {
 
     if (err) {
       console.log(err);
