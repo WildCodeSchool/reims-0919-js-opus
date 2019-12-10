@@ -1,12 +1,16 @@
-import React from "react";
-import "./App.css";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
+
+import './App.css';
+
+import Directory from './components/directory/Directory';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      offers: []
+      offers: [],
+      isLoaded: false
     };
   }
 
@@ -16,38 +20,28 @@ class App extends React.Component {
 
   getOffers = () => {
     axios
-      .get("http://localhost:8000/offer")
+      .get('http://localhost:8000/offer')
       .then(res => res.data)
       .then(data =>
         this.setState({
-          offers: data
+          offers: data,
+          isLoaded: true
         })
       );
   };
 
   render() {
-    const { offers } = this.state;
+    const { offers, isLoaded } = this.state;
 
-    return (
-      <div className="App">
-        {offers.map(offer => {
-          return (
-            <div className="card" key={offer.id_offer}>
-              <img src={offer.picture} alt={offer.society_name} />
-              <div className="info">
-                <p className="card-adress">{offer.adress_city}</p>
-                <div className="title-info">
-                  <p>{offer.title}</p>
-                  <img src="https://i.ibb.co/gDDGF5Q/Homme-50x50px.png" alt="nombres de personnes" style={{height : '8%', width : "8%", margin : "0.2rem"}} />
-                  <p>{offer.capacity}</p>
-                  <p>{offer.price}€/h</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    );
+    if (!isLoaded) {
+      return <h1>Loading...</h1>;
+    } else {
+      return (
+        <div className="App">
+          <Directory offers={offers} />
+        </div>
+      );
+    }
   }
 }
 
