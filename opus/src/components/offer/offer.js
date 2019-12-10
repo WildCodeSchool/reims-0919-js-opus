@@ -23,6 +23,7 @@ const Offer = ({
             style={{ height: '8%', width: '8%', margin: '0.2rem' }}
           />
           <p>{capacity}</p>
+          <span>|</span>
           <p>{price}€/h</p>
         </div>
       </div>
