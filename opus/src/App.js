@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import './App.css';
 
-import Directory from './components/directory/directory';
+import Directory from './components/directory/Directory';
 
 class App extends React.Component {
   constructor() {

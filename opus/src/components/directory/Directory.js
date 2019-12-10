@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './directory.css';
+import './Directory.css';
 
-import Offer from '../offer/offer';
+import Offer from '../offer/Offer';
 
 const Directory = offers => (
   <div className="offers-display">
