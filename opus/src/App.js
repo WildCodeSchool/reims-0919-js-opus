@@ -1,6 +1,7 @@
-import React from "react";
-import "./App.css";
-import axios from "axios";
+import React from 'react';
+import './App.css';
+import axios from 'axios';
+import Footer from './components/Footer';
 
 class App extends React.Component {
   constructor() {
@@ -16,7 +17,7 @@ class App extends React.Component {
 
   getOffers = () => {
     axios
-      .get("http://localhost:8000/offer")
+      .get('http://localhost:8000/offer')
       .then(res => res.data)
       .then(data =>
         this.setState({
@@ -38,7 +39,11 @@ class App extends React.Component {
                 <p className="card-adress">{offer.adress_city}</p>
                 <div className="title-info">
                   <p>{offer.title}</p>
-                  <img src="https://i.ibb.co/gDDGF5Q/Homme-50x50px.png" alt="nombres de personnes" style={{height : '8%', width : "8%", margin : "0.2rem"}} />
+                  <img
+                    src="https://i.ibb.co/gDDGF5Q/Homme-50x50px.png"
+                    alt="nombres de personnes"
+                    style={{ height: '8%', width: '8%', margin: '0.2rem' }}
+                  />
                   <p>{offer.capacity}</p>
                   <p>{offer.price}€/h</p>
                 </div>
@@ -46,6 +51,8 @@ class App extends React.Component {
             </div>
           );
         })}
+
+        <Footer />
       </div>
     );
   }
