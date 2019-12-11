@@ -1,0 +1,18 @@
+.menu-footer {
+  bottom: 0;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  border: solid 1px gray;
+  background-color: white;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.footer img {
+  height: 10vw;
+}

@@ -1,6 +1,8 @@
 const connection = require('./conf');
 const express = require('express');
+
 const bodyParser = require('body-parser');
+
 const app = express();
 const cors = require('cors');
 const port = 8000;
@@ -9,6 +11,7 @@ app.use(cors());
 
 app.use(bodyParser.json()); // Support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Support URL-encoded bodies
+
 
 // CONNECTION PORT ///////////////////////////////////////////////////
 app.listen(port, err => {
@@ -19,6 +22,7 @@ app.listen(port, err => {
 });
 
 //INITIALISATION GET ROUTE /////////////////////////////////////////////////
+
 app.get('/offers', (req, res) => {
   connection.query('SELECT * from offer', (err, results) => {
     if (err) {
