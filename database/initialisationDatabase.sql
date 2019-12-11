@@ -8,8 +8,8 @@ CREATE TABLE `offer` (
     `price` int NOT NULL,
     `capacity` int NOT NULL,
     `offer_description` text NOT NULL,
-    `adress_street` varchar(255) NOT NULL,
-    `adress_city` varchar(100) NOT NULL,
+    `address_street` varchar(255) NOT NULL,
+    `address_city` varchar(100) NOT NULL,
     `zip_code` varchar(25) NOT NULL,
     `country` varchar(50) NOT NULL  
 );
@@ -21,8 +21,8 @@ INSERT INTO offer (
     price,
     capacity,
     offer_description,
-    adress_street,
-    adress_city,
+    address_street,
+    address_city,
     zip_code,
     country) VALUES (
     'Opus',
