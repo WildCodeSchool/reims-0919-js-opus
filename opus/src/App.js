@@ -3,7 +3,8 @@ import axios from 'axios';
 
 import './App.css';
 
-import Directory from './components/directory/Directory';
+// import Directory from './components/directory/Directory';
+import SignUp from './components/singnup/SignUp';
 
 class App extends React.Component {
   constructor() {
@@ -20,7 +21,7 @@ class App extends React.Component {
 
   getOffers = () => {
     axios
-      .get('http://localhost:8000/offer')
+      .get('http://localhost:8000/offers')
       .then(res => res.data)
       .then(data =>
         this.setState({
@@ -36,9 +37,10 @@ class App extends React.Component {
     if (!isLoaded) {
       return <h1>Loading...</h1>;
     } else {
+      // <Directory offers={offers} />
       return (
         <div className="App">
-          <Directory offers={offers} />
+          <SignUp />
         </div>
       );
     }
