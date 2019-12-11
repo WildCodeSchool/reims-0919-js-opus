@@ -4,13 +4,16 @@ import axios from 'axios';
 import './App.css';
 
 import Directory from './components/directory/Directory';
+import FormPostOffer from './components/formPostOffer/FormPostOffer';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       offers: [],
-      isLoaded: false
+      isLoaded: false,
+      email: '',
+      password: ''
     };
   }
 
@@ -20,7 +23,7 @@ class App extends React.Component {
 
   getOffers = () => {
     axios
-      .get('http://localhost:8000/offer')
+      .get('http://localhost:8000/offers')
       .then(res => res.data)
       .then(data =>
         this.setState({
@@ -28,6 +31,18 @@ class App extends React.Component {
           isLoaded: true
         })
       );
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    this.setState({ email: '', password: '' });
+  };
+
+  handleChange = event => {
+    const { value, name } = event.target;
+
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -39,6 +54,7 @@ class App extends React.Component {
       return (
         <div className="App">
           <Directory offers={offers} />
+          <FormPostOffer />
         </div>
       );
     }
