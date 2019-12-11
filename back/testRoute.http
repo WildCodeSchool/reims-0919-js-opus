@@ -2,4 +2,4 @@
 GET http://localhost:8000/offer
 
 ### post add-offer
-POST http://localhost:8000/offer/add
+POST http://localhost:8000/offers/add
