@@ -11,7 +11,7 @@ class Footer extends React.Component {
             alt="logo home"
           />
           <img
-            src="https://i.ibb.co/cgprdnv/coeur-rose-png.png"
+            src="https://i.ibb.co/9bsMMn3/coeur-rose-2.png"
             alt="logo favorite"
           />
           <img
