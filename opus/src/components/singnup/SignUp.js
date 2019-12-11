@@ -11,10 +11,10 @@ export default class SignUp extends Component {
         <form className="containerFormSignUp">
           <input className="inputSignUP" type="text" placeholder="Nom" />
           <input className="inputSignUP" type="text" placeholder="Prénom" />
-          <input className="inputSignUP" type="text" placeholder="Email" />
+          <input className="inputSignUP" type="email" placeholder="Email" />
           <input
             className="inputSignUP"
-            type="text"
+            type="password"
             placeholder="Mot de passe"
           />
           <input
