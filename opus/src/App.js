@@ -3,15 +3,18 @@ import axios from 'axios';
 
 import './App.css';
 
-// import Directory from './components/directory/Directory';
-import SignUp from './components/singnup/SignUp';
+
+import Directory from './components/directory/Directory';
+import FormPostOffer from './components/formPostOffer/FormPostOffer';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       offers: [],
-      isLoaded: false
+      isLoaded: false,
+      email: '',
+      password: ''
     };
   }
 
@@ -31,6 +34,18 @@ class App extends React.Component {
       );
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    this.setState({ email: '', password: '' });
+  };
+
+  handleChange = event => {
+    const { value, name } = event.target;
+
+    this.setState({ [name]: value });
+  };
+
   render() {
     const { offers, isLoaded } = this.state;
 
@@ -40,7 +55,8 @@ class App extends React.Component {
       // <Directory offers={offers} />
       return (
         <div className="App">
-          <SignUp />
+          <Directory offers={offers} />
+          <FormPostOffer />
         </div>
       );
     }
