@@ -121,8 +121,8 @@ class FormPostOffer extends React.Component {
             onChange={this.handleChange}
             required
           ></textarea>
-          <div className="adress">
-            <div className="adressbar1">
+          <div className="address">
+            <div className="addressbar1">
               <label>Adress</label>
               <input
                 name="adress_street"
@@ -140,7 +140,7 @@ class FormPostOffer extends React.Component {
                 required
               />
             </div>
-            <div className="adressbar2">
+            <div className="addressbar2">
               <label>Zip code</label>
               <input
                 name="zip_code"

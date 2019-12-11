@@ -27,7 +27,7 @@
   border-radius: 0.3rem;
 }
 
-.adress {
+.address {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -36,19 +36,19 @@
   margin-top: 2rem;
 }
 
-.adressbar1,
-.adressbar2 {
+.addressbar1,
+.addressbar2 {
   display: flex;
   flex-direction: column;
   margin: 0rem;
 }
 
-.adress label {
+.address label {
   margin: 0;
 }
 
-.adress input,
-.adress textarea {
+.address input,
+.address textarea {
   width: 40vw;
   margin: 1.2rem;
 }
