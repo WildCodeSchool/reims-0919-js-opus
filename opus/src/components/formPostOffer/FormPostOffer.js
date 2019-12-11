@@ -14,8 +14,8 @@ class FormPostOffer extends React.Component {
       price: null,
       capacity: null,
       offer_description: '',
-      adress_street: '',
-      adress_city: '',
+      address_street: '',
+      address_city: '',
       zip_code: '',
       country: ''
     };
@@ -30,8 +30,8 @@ class FormPostOffer extends React.Component {
         price: this.state.price,
         capacity: this.state.capacity,
         offer_description: this.state.offer_description,
-        adress_street: this.state.adress_street,
-        adress_city: this.state.adress_city,
+        address_street: this.state.address_street,
+        address_city: this.state.address_city,
         zip_code: this.state.zip_code,
         country: this.state.country
       })
@@ -53,8 +53,8 @@ class FormPostOffer extends React.Component {
       price: null,
       capacity: null,
       offer_description: '',
-      adress_street: '',
-      adress_city: '',
+      address_street: '',
+      address_city: '',
       zip_code: '',
       country: ''
     });
@@ -77,14 +77,14 @@ class FormPostOffer extends React.Component {
             name="society_name"
             type="text"
             onChange={this.handleChange}
-            value={this.state.email}
+            value={this.state.society_name}
             required
           />
           <label>Title</label>
           <input
             name="title"
             type="text"
-            value={this.state.password}
+            value={this.state.title}
             onChange={this.handleChange}
             required
           />
@@ -92,7 +92,7 @@ class FormPostOffer extends React.Component {
           <input
             name="price"
             type="number"
-            value={this.state.password}
+            value={this.state.price}
             onChange={this.handleChange}
             required
           />
@@ -109,7 +109,7 @@ class FormPostOffer extends React.Component {
           <input
             name="capacity"
             type="number"
-            value={this.state.password}
+            value={this.state.capacity}
             onChange={this.handleChange}
             required
           />
@@ -117,25 +117,25 @@ class FormPostOffer extends React.Component {
           <textarea
             name="offer_description"
             type="textarea"
-            value={this.state.password}
+            value={this.state.offer_description}
             onChange={this.handleChange}
             required
           ></textarea>
           <div className="address">
             <div className="addressbar1">
-              <label>Adress</label>
+              <label>Address</label>
               <input
-                name="adress_street"
+                name="address_street"
                 type="text"
-                value={this.state.password}
+                value={this.state.address_street}
                 onChange={this.handleChange}
                 required
               />
               <label>City</label>
               <input
-                name="adress_city"
+                name="address_city"
                 type="text"
-                value={this.state.password}
+                value={this.state.address_city}
                 onChange={this.handleChange}
                 required
               />
@@ -145,7 +145,7 @@ class FormPostOffer extends React.Component {
               <input
                 name="zip_code"
                 type="text"
-                value={this.state.password}
+                value={this.state.zip_code}
                 onChange={this.handleChange}
                 required
               />
@@ -153,7 +153,7 @@ class FormPostOffer extends React.Component {
               <input
                 name="country"
                 type="text"
-                value={this.state.password}
+                value={this.state.country}
                 onChange={this.handleChange}
                 required
               />
