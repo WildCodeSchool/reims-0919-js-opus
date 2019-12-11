@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import './App.css';
 
+
 import Directory from './components/directory/Directory';
 import FormPostOffer from './components/formPostOffer/FormPostOffer';
 
@@ -53,6 +54,7 @@ class App extends React.Component {
     if (!isLoaded) {
       return <h1>Loading...</h1>;
     } else {
+      // <Directory offers={offers} />
       return (
         <div className="App">
           <Directory offers={offers} />
