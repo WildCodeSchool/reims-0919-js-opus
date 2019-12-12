@@ -6,7 +6,7 @@ import './signUp.css';
 export default class SignUp extends Component {
   state = {
     firstname: '',
-    lastnamne: '',
+    lastname: '',
     society_name: '',
     email: '',
     password: '',
@@ -48,6 +48,7 @@ export default class SignUp extends Component {
             placeholder="Prénom"
             onChange={this.handleChange}
             value={this.state.firsttname}
+            name="firstname"
           />
           <input
             className="inputSignUP"
@@ -55,6 +56,7 @@ export default class SignUp extends Component {
             placeholder="Nom"
             onChange={this.handleChange}
             value={this.state.lastname}
+            name="lastname"
           />
           <input
             className="inputSignUP"
@@ -62,6 +64,7 @@ export default class SignUp extends Component {
             placeholder="Email"
             onChange={this.handleChange}
             value={this.state.email}
+            name="email"
           />
           <input
             className="inputSignUP"
@@ -69,6 +72,7 @@ export default class SignUp extends Component {
             placeholder="Ville"
             onChange={this.handleChange}
             value={this.state.city}
+            mane="city"
           />
           <input
             className="inputSignUP"
@@ -76,6 +80,7 @@ export default class SignUp extends Component {
             placeholder="Mot de passe"
             onChange={this.handleChange}
             value={this.state.password}
+            name="password"
           />
           <input
             className="inputSignUP"
@@ -83,9 +88,10 @@ export default class SignUp extends Component {
             placeholder="Société"
             onChange={this.handleChange}
             value={this.state.society_name}
+            name="society_name"
           />
           <div>
-            <input type="checkbox" id="accept"></input>
+            <input type="checkbox" id="accept" required></input>
             <label htmlFor="accept">J'accepte les termes CGU et CGV</label>
           </div>
 
