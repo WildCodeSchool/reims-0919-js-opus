@@ -1,7 +1,7 @@
 import React from 'react';
 
 import axios from 'axios';
-import SignUp from './components/singnup/SignUp';
+
 import './App.css';
 
 import Directory from './components/directory/Directory';
@@ -55,9 +55,8 @@ class App extends React.Component {
       // <Directory offers={offers} />
       return (
         <div className="App">
-          {/* <Directory offers={offers} /> */}
-          {/* <FormPostOffer /> */}
-          <SignUp />>
+          <Directory offers={offers} />
+          <FormPostOffer />
         </div>
       );
     }
