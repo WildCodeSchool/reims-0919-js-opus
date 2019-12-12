@@ -72,7 +72,7 @@ export default class SignUp extends Component {
             placeholder="Ville"
             onChange={this.handleChange}
             value={this.state.city}
-            mane="city"
+            name="city"
           />
           <input
             className="inputSignUP"
