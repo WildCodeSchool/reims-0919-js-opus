@@ -4,10 +4,8 @@ import axios from 'axios';
 
 import './App.css';
 
-
 import Directory from './components/directory/Directory';
 import FormPostOffer from './components/formPostOffer/FormPostOffer';
-
 
 class App extends React.Component {
   constructor() {
