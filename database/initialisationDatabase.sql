@@ -14,26 +14,13 @@ CREATE TABLE `offer` (
     `country` varchar(50) NOT NULL  
 );
 
-INSERT INTO offer (
-    society_name,
-    title,
-    picture,
-    price,
-    capacity,
-    offer_description,
-    address_street,
-    address_city,
-    zip_code,
-    country) VALUES (
-    'Opus',
-    'salle de réunion',
-    'https://ibb.co/p4QDF5M',
-    150,
-    8,
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc blandit elit nec est scelerisque, et facilisis lacus gravida. Donec imperdiet ex tincidunt ex accumsan hendrerit. Nulla pellentesque accumsan dolor quis iaculis. Sed sed dui a nisi nullam.",
-    "6 rue de Saint Brice",
-    "Reims",
-    "51100",
-    "France"
+CREATE TABLE `user` (
+    `id_user` int auto_increment NOT NULL PRIMARY KEY,
+    `firstname` varchar(50) NOT NULL,
+    `lastname` varchar(50) NOT NULL,
+    `society_name` varchar(100) NOT NULL,
+    `email` varchar(200) NOT NULL,
+    `password` varchar(200) NOT NULL,
+    `city` varchar(100) NOT NULL,
+    `country` varchar(50) NOT NULL, 
 );
-
