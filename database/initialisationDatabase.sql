@@ -20,7 +20,7 @@ CREATE TABLE `user` (
     `lastname` varchar(50) NOT NULL,
     `society_name` varchar(100) NOT NULL,
     `email` varchar(200) NOT NULL,
-    `password` varchar(200) NOT NULL,
+    `password` varchar(255) NOT NULL,
     `city` varchar(100) NOT NULL,
-    `country` varchar(50) NOT NULL, 
+    `country` varchar(50) NOT NULL
 );
