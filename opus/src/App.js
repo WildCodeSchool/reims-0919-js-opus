@@ -5,9 +5,10 @@ import axios from 'axios';
 import './App.css';
 
 
+import Header from './components/header/Header';
+
 import Directory from './components/directory/Directory';
 import FormPostOffer from './components/formPostOffer/FormPostOffer';
-
 
 class App extends React.Component {
   constructor() {
@@ -57,6 +58,7 @@ class App extends React.Component {
       // <Directory offers={offers} />
       return (
         <div className="App">
+          <Header />
           <Directory offers={offers} />
           <FormPostOffer />
         </div>
