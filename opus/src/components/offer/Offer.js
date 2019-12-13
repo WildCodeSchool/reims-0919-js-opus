@@ -21,12 +21,11 @@ const Offer = ({
       <div className="info">
         <p className="card-adress">{address_city}</p>
         <div className="title-info">
-          <p>{title}</p>
+          <h3>{title}</h3>
           <div className="capacityprice">
             <img
               src="https://i.ibb.co/gDDGF5Q/Homme-50x50px.png"
               alt="nombres de personnes"
-              style={{ height: '8%', width: '8%', margin: '0.2rem' }}
               className="capacity-offer"
             />
             <p>{capacity}</p>
