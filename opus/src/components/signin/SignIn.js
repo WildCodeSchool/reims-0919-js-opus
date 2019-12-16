@@ -15,10 +15,10 @@ export default class SignIn extends Component {
         email: this.state.email,
         password: this.state.password
       })
-      .then(function(res) {
+      .then(res => {
         console.log(res);
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -28,7 +28,7 @@ export default class SignIn extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = () => {
     this.setState({
       email: '',
       password: ''

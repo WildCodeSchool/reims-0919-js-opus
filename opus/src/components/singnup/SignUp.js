@@ -26,10 +26,10 @@ export default class SignUp extends Component {
         city: this.state.city,
         country: this.state.country
       })
-      .then(function(res) {
+      .then(res => {
         console.log(res);
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
   };
