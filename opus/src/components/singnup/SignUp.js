@@ -11,18 +11,20 @@ export default class SignUp extends Component {
     email: '',
     password: '',
     city: '',
-    confirm_password: ''
+    confirm_password: '',
+    country: ''
   };
 
   postNewUser = () => {
     axios
       .post('http://localhost:8000/users/add', {
         firstname: this.state.firstname,
-        lastname: this.state.lastnamne,
+        lastname: this.state.lastname,
         society_name: this.state.society_name,
         email: this.state.email,
         password: this.state.password,
-        city: this.state.city
+        city: this.state.city,
+        country: this.state.country
       })
       .then(function(res) {
         console.log(res);
@@ -55,7 +57,8 @@ export default class SignUp extends Component {
       email: '',
       password: '',
       city: '',
-      confirm_password: ''
+      confirm_password: '',
+      country: ''
     });
   };
 
@@ -96,6 +99,14 @@ export default class SignUp extends Component {
             onChange={this.handleChange}
             value={this.state.city}
             name="city"
+          />
+          <input
+            className="inputSignUP"
+            type="text"
+            placeholder="Pays"
+            onChange={this.handleChange}
+            value={this.state.country}
+            name="country"
           />
           <input
             className="inputSignUP"
