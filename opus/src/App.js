@@ -4,11 +4,12 @@ import axios from 'axios';
 
 import './App.css';
 
-
 import Header from './components/header/Header';
 
 import Directory from './components/directory/Directory';
 import FormPostOffer from './components/formPostOffer/FormPostOffer';
+import SignUp from './components/singnup/SignUp';
+import SignIn from './components/signin/SignIn';
 
 class App extends React.Component {
   constructor() {
@@ -61,6 +62,8 @@ class App extends React.Component {
           <Header />
           <Directory offers={offers} />
           <FormPostOffer />
+          <SignUp />
+          <SignIn />
         </div>
       );
     }

@@ -10,30 +10,56 @@ export default class SignUp extends Component {
     society_name: '',
     email: '',
     password: '',
-    city: ''
+    city: '',
+    confirm_password: '',
+    country: ''
   };
 
   postNewUser = () => {
     axios
       .post('http://localhost:8000/users/add', {
         firstname: this.state.firstname,
-        lastname: this.state.lastnamne,
+        lastname: this.state.lastname,
         society_name: this.state.society_name,
         email: this.state.email,
         password: this.state.password,
-        city: this.state.city
+        city: this.state.city,
+        country: this.state.country
       })
-      .then(function(res) {
+      .then(res => {
         console.log(res);
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
+  };
+
+  checkPassword = () => {
+    if (this.state.password === this.state.confirm_password) {
+      alert('Inscription effectuer');
+      this.postNewUser();
+      this.handleSubmit();
+    } else {
+      alert('Erreur dans la saisie du mot de passe.');
+    }
   };
 
   handleChange = event => {
     const { value, name } = event.target;
     this.setState({ [name]: value });
+  };
+
+  handleSubmit = event => {
+    this.setState({
+      firstname: '',
+      lastname: '',
+      society_name: '',
+      email: '',
+      password: '',
+      city: '',
+      confirm_password: '',
+      country: ''
+    });
   };
 
   render() {
@@ -47,7 +73,7 @@ export default class SignUp extends Component {
             type="text"
             placeholder="Prénom"
             onChange={this.handleChange}
-            value={this.state.firsttname}
+            value={this.state.firstname}
             name="firstname"
           />
           <input
@@ -76,11 +102,27 @@ export default class SignUp extends Component {
           />
           <input
             className="inputSignUP"
+            type="text"
+            placeholder="Pays"
+            onChange={this.handleChange}
+            value={this.state.country}
+            name="country"
+          />
+          <input
+            className="inputSignUP"
             type="password"
             placeholder="Mot de passe"
             onChange={this.handleChange}
             value={this.state.password}
             name="password"
+          />
+          <input
+            className="inputSignUP"
+            type="password"
+            placeholder="Confirmez votre mot de passe"
+            onChange={this.handleChange}
+            value={this.state.confirm_password}
+            name="confirm_password"
           />
           <input
             className="inputSignUP"
@@ -97,9 +139,9 @@ export default class SignUp extends Component {
 
           <input
             className="btnSignUp"
-            type="submit"
+            type="button"
             value="Valider"
-            onClick={this.postNewUser}
+            onClick={this.checkPassword}
           />
         </form>
       </>
