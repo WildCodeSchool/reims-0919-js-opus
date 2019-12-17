@@ -27,6 +27,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  padding-left: 2%;
 }
 
 #arrow-submit {

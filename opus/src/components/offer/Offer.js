@@ -10,6 +10,7 @@ const Offer = ({
   capacity,
   price
 }) => {
+  console.log('ALLO');
   return (
     <div className="card">
       <img src={picture} alt={society_name} className="picture" />
