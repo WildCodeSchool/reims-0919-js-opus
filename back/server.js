@@ -1,9 +1,13 @@
 const connection = require('./conf');
-// const { key } = require('./key');
 const express = require('express');
 
 const bodyParser = require('body-parser');
+
+const key = require('./key');
+const verifyToken = require('./verifyToken');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const app = express();
 const cors = require('cors');
@@ -13,18 +17,6 @@ app.use(cors());
 
 app.use(bodyParser.json()); // Support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Support URL-encoded bodies
-
-const verifyToken = (req, res, next) => {
-  const bearerHeader = req.headers.authorization;
-  if (typeof bearerHeader !== 'undefined') {
-    const bearer = bearerHeader.split(' '); // split bearerHeader in a new Array
-    const bearerToken = bearer[1]; // store index 1 of the newly created array in a new variable bearToken
-    req.token = bearerToken;
-    next(); // step to the next middleware
-  } else {
-    res.sendStatus(403);
-  }
-};
 
 // CONNECTION PORT ///////////////////////////////////////////////////
 app.listen(port, err => {
@@ -46,14 +38,24 @@ app.get('/offers', (req, res) => {
 });
 
 // POST OFFERS ////////////////////////////////////////////////
-app.post('/offers/add', (req, res) => {
+app.post('/offers/add', verifyToken, (req, res) => {
   const offerAdd = req.body;
-  connection.query('INSERT INTO offer SET ?', offerAdd, (err, results) => {
+  jwt.verify(req.token, key, (err, authData) => {
     if (err) {
-      console.log(err);
-      res.status(500).send("Erreur lors de l'ajout d'une offre");
+      res.sendStatus(401);
     } else {
-      res.sendStatus(200);
+      res.json({
+        message: 'Post created',
+        authData
+      });
+      connection.query('INSERT INTO offer SET ?', offerAdd, (err, results) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send("Erreur lors de l'ajout d'une offre");
+        } else {
+          res.sendStatus(200);
+        }
+      });
     }
   });
 });
@@ -72,14 +74,51 @@ app.get('/users', (req, res) => {
 // POST USER ////////////////////////////////////////////////
 app.post('/users/signup', (req, res) => {
   const userAdd = req.body;
-  connection.query('INSERT INTO user SET ?', userAdd, (err, results) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("Erreur lors de l'ajout d'un utilisateur");
-    } else {
-      res.sendStatus(200);
+  connection.query(
+    'SELECT email FROM user WHERE email = ?',
+    userAdd.email,
+    (err, results) => {
+      if (results.length !== 0) {
+        res.send('Email déjà existant');
+      } else {
+        // if (userAdd.password === userAdd.confirm_password) {
+        let hashpassword = '';
+        bcrypt.genSalt(saltRounds, (err, salt) => {
+          bcrypt.hash(userAdd.password, salt, (err, hash) => {
+            hashpassword = hash;
+            insert();
+          });
+        });
+        const insert = () => {
+          connection.query(
+            'INSERT INTO user SET ?',
+            {
+              firstname: userAdd.firstname,
+              lastname: userAdd.lastname,
+              society_name: userAdd.society_name,
+              email: userAdd.email,
+              password: hashpassword,
+              city: userAdd.city,
+              country: userAdd.country
+            },
+            (err, results) => {
+              if (err) {
+                console.log(err);
+                res.status(500).send("Erreur lors de l'ajout d'un utilisateur");
+              } else {
+                jwt.sign(userAdd, key, (err, token) => {
+                  res.json({
+                    token
+                  });
+                });
+              }
+            }
+          );
+        };
+        // }
+      }
     }
-  });
+  );
 });
 
 // LOGIN USER ////////////////////////////////////////////////
@@ -94,16 +133,21 @@ app.post('/users/signin', (req, res) => {
       } else if (results.length === 0) {
         res.send('Email incorrecte');
       } else {
-        console.log(results);
-        if (results[0].password === userInfo.password) {
-          jwt.sign(userInfo, 'secret', (err, token) => {
-            res.json({
-              token
-            });
-          });
-        } else {
-          res.send('Mot de passe incorrecte');
-        }
+        bcrypt.compare(
+          userInfo.password,
+          results[0].password,
+          (err, response) => {
+            if (response) {
+              jwt.sign(userInfo, key, (err, token) => {
+                res.json({
+                  token
+                });
+              });
+            } else {
+              res.send('correspondance mot de passe incorrecte');
+            }
+          }
+        );
       }
     }
   );

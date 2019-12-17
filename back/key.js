@@ -1,3 +1,3 @@
 const key = 'lestokenscestbienmaisjwtpasoufpourlasecuritevivelessessions';
 
-export default { key };
+module.exports = key;
