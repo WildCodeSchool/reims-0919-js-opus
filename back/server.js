@@ -81,7 +81,6 @@ app.post('/users/signup', (req, res) => {
       if (results.length !== 0) {
         res.send('Email déjà existant');
       } else {
-        // if (userAdd.password === userAdd.confirm_password) {
         let hashpassword = '';
         bcrypt.genSalt(saltRounds, (err, salt) => {
           bcrypt.hash(userAdd.password, salt, (err, hash) => {
@@ -115,7 +114,6 @@ app.post('/users/signup', (req, res) => {
             }
           );
         };
-        // }
       }
     }
   );
