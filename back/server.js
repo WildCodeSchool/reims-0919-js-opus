@@ -1,7 +1,9 @@
 const connection = require('./conf');
+// const { key } = require('./key');
 const express = require('express');
 
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const cors = require('cors');
@@ -11,6 +13,18 @@ app.use(cors());
 
 app.use(bodyParser.json()); // Support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Support URL-encoded bodies
+
+const verifyToken = (req, res, next) => {
+  const bearerHeader = req.headers.authorization;
+  if (typeof bearerHeader !== 'undefined') {
+    const bearer = bearerHeader.split(' '); // split bearerHeader in a new Array
+    const bearerToken = bearer[1]; // store index 1 of the newly created array in a new variable bearToken
+    req.token = bearerToken;
+    next(); // step to the next middleware
+  } else {
+    res.sendStatus(403);
+  }
+};
 
 // CONNECTION PORT ///////////////////////////////////////////////////
 app.listen(port, err => {
@@ -56,7 +70,7 @@ app.get('/users', (req, res) => {
 });
 
 // POST USER ////////////////////////////////////////////////
-app.post('/users/add', (req, res) => {
+app.post('/users/signup', (req, res) => {
   const userAdd = req.body;
   connection.query('INSERT INTO user SET ?', userAdd, (err, results) => {
     if (err) {
@@ -66,6 +80,33 @@ app.post('/users/add', (req, res) => {
       res.sendStatus(200);
     }
   });
+});
+
+// LOGIN USER ////////////////////////////////////////////////
+app.post('/users/signin', (req, res) => {
+  const userInfo = req.body;
+  connection.query(
+    'SELECT email, password FROM user WHERE email = ?',
+    userInfo.email,
+    (err, results) => {
+      if (err) {
+        res.status(500).send('Error server 500');
+      } else if (results.length === 0) {
+        res.send('Email incorrecte');
+      } else {
+        console.log(results);
+        if (results[0].password === userInfo.password) {
+          jwt.sign(userInfo, 'secret', (err, token) => {
+            res.json({
+              token
+            });
+          });
+        } else {
+          res.send('Mot de passe incorrecte');
+        }
+      }
+    }
+  );
 });
 
 // SEARCH CITY /////////////////////////////////////////////////
