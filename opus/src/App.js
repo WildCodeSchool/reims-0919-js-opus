@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import Header from './components/header/Header';
+//import Header from './components/header/Header';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Directory from './components/directory/Directory';
 import FormPostOffer from './components/formPostOffer/FormPostOffer';
@@ -23,7 +23,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        {/* <Header /> */}
         <Router>
           <Switch>
             <Route exact path="/" component={SignIn} />

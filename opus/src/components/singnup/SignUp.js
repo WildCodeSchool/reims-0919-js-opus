@@ -17,7 +17,7 @@ export default class SignUp extends Component {
 
   postNewUser = () => {
     axios
-      .post('http://localhost:8000/users/add', {
+      .post('http://localhost:8000/users/signup', {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
         society_name: this.state.society_name,
