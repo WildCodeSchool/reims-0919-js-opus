@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import logo from '../singnup/logo-OPUS.png';
 import './SignIn.css';
+import { Link } from 'react-router-dom';
 
 export default class SignIn extends Component {
   state = {
@@ -38,8 +39,9 @@ export default class SignIn extends Component {
   render() {
     return (
       <>
-        <img className="logoCommunOpus" src={logo} alt="logo OPUS"></img>
-
+        <Link to="signup">
+          <img className="logoCommunOpus" src={logo} alt="logo OPUS"></img>
+        </Link>
         <form className="containerFormSignIn" onSubmit={this.handleSubmit}>
           <input
             className="inputSignIn"
@@ -57,12 +59,14 @@ export default class SignIn extends Component {
             value={this.state.password}
             name="password"
           />
-          <input
-            className="btnSignIn"
-            type="button"
-            value="Valider"
-            onClick={this.loginUser}
-          />
+          <Link to="home">
+            <input
+              className="btnSignIn"
+              type="button"
+              value="Valider"
+              onClick={this.loginUser}
+            />
+          </Link>
         </form>
       </>
     );
