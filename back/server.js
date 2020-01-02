@@ -3,6 +3,12 @@ const express = require('express');
 
 const bodyParser = require('body-parser');
 
+const key = require('./key');
+const verifyToken = require('./verifyToken');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const app = express();
 const cors = require('cors');
 const port = 8000;
@@ -32,14 +38,24 @@ app.get('/offers', (req, res) => {
 });
 
 // POST OFFERS ////////////////////////////////////////////////
-app.post('/offers/add', (req, res) => {
+app.post('/offers/add', verifyToken, (req, res) => {
   const offerAdd = req.body;
-  connection.query('INSERT INTO offer SET ?', offerAdd, (err, results) => {
+  jwt.verify(req.token, key, (err, authData) => {
     if (err) {
-      console.log(err);
-      res.status(500).send("Erreur lors de l'ajout d'une offre");
+      res.sendStatus(401);
     } else {
-      res.sendStatus(200);
+      res.json({
+        message: 'Post created',
+        authData
+      });
+      connection.query('INSERT INTO offer SET ?', offerAdd, (err, results) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send("Erreur lors de l'ajout d'une offre");
+        } else {
+          res.sendStatus(200);
+        }
+      });
     }
   });
 });
@@ -56,16 +72,83 @@ app.get('/users', (req, res) => {
 });
 
 // POST USER ////////////////////////////////////////////////
-app.post('/users/add', (req, res) => {
+app.post('/users/signup', (req, res) => {
   const userAdd = req.body;
-  connection.query('INSERT INTO user SET ?', userAdd, (err, results) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("Erreur lors de l'ajout d'un utilisateur");
-    } else {
-      res.sendStatus(200);
+  connection.query(
+    'SELECT email FROM user WHERE email = ?',
+    userAdd.email,
+    (err, results) => {
+      if (results.length !== 0) {
+        res.send('Email déjà existant');
+      } else {
+        let hashpassword = '';
+        bcrypt.genSalt(saltRounds, (err, salt) => {
+          bcrypt.hash(userAdd.password, salt, (err, hash) => {
+            hashpassword = hash;
+            insert();
+          });
+        });
+        const insert = () => {
+          connection.query(
+            'INSERT INTO user SET ?',
+            {
+              firstname: userAdd.firstname,
+              lastname: userAdd.lastname,
+              society_name: userAdd.society_name,
+              email: userAdd.email,
+              password: hashpassword,
+              city: userAdd.city,
+              country: userAdd.country
+            },
+            (err, results) => {
+              if (err) {
+                console.log(err);
+                res.status(500).send("Erreur lors de l'ajout d'un utilisateur");
+              } else {
+                jwt.sign(userAdd, key, (err, token) => {
+                  res.json({
+                    token
+                  });
+                });
+              }
+            }
+          );
+        };
+      }
     }
-  });
+  );
+});
+
+// LOGIN USER ////////////////////////////////////////////////
+app.post('/users/signin', (req, res) => {
+  const userInfo = req.body;
+  connection.query(
+    'SELECT email, password FROM user WHERE email = ?',
+    userInfo.email,
+    (err, results) => {
+      if (err) {
+        res.status(500).send('Error server 500');
+      } else if (results.length === 0) {
+        res.send('Email incorrecte');
+      } else {
+        bcrypt.compare(
+          userInfo.password,
+          results[0].password,
+          (err, response) => {
+            if (response) {
+              jwt.sign(userInfo, key, (err, token) => {
+                res.json({
+                  token
+                });
+              });
+            } else {
+              res.send('correspondance mot de passe incorrecte');
+            }
+          }
+        );
+      }
+    }
+  );
 });
 
 // SEARCH CITY /////////////////////////////////////////////////

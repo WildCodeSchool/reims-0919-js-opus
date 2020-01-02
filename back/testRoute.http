@@ -3,3 +3,11 @@ GET http://localhost:8000/offers
 
 ### post add-offer
 POST http://localhost:8000/offers/add
+
+### post login
+POST http://localhost:8000/users/signin
+Content-Type: application/json
+{
+  email: o@oojooj.fr,
+  password: 13345,
+}
