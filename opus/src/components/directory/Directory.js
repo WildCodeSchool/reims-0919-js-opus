@@ -44,7 +44,6 @@ class Directory extends React.Component {
     if (!isLoaded) {
       return <h1>Loading...</h1>;
     } else {
-      console.log(offers);
       return (
         <>
           <Header
