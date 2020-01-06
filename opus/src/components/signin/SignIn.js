@@ -5,10 +5,14 @@ import './SignIn.css';
 import { Link } from 'react-router-dom';
 
 export default class SignIn extends Component {
-  state = {
-    email: '',
-    password: ''
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      token: null
+    };
+  }
 
   loginUser = () => {
     axios
@@ -18,6 +22,18 @@ export default class SignIn extends Component {
       })
       .then(res => {
         console.log(res);
+        res.data.token &&
+          this.setState({
+            token: res.data.token
+          });
+        if (this.state.token !== null) {
+          this.props.history.push('/home');
+        } else {
+          alert('Mot de passe incorrecte');
+          this.setState({
+            password: ''
+          });
+        }
       })
       .catch(error => {
         console.log(error);
@@ -59,14 +75,12 @@ export default class SignIn extends Component {
             value={this.state.password}
             name="password"
           />
-          <Link to="home">
-            <input
-              className="btnSignIn"
-              type="button"
-              value="Valider"
-              onClick={this.loginUser}
-            />
-          </Link>
+          <input
+            className="btnSignIn"
+            type="button"
+            value="Valider"
+            onClick={this.loginUser}
+          />
         </form>
       </>
     );
