@@ -12,12 +12,13 @@ export default class SignUp extends Component {
     password: '',
     city: '',
     confirm_password: '',
-    country: ''
+    country: '',
+    token: null
   };
 
   postNewUser = () => {
     axios
-      .post('http://localhost:8000/users/add', {
+      .post('http://localhost:8000/users/signup', {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
         society_name: this.state.society_name,
@@ -28,6 +29,13 @@ export default class SignUp extends Component {
       })
       .then(res => {
         console.log(res);
+        res.data.token &&
+          this.setState({
+            token: `Bearer ${res.data.token}`
+          });
+        if (this.state.token !== null) {
+          this.props.history.push('/home');
+        }
       })
       .catch(error => {
         console.log(error);
@@ -41,6 +49,10 @@ export default class SignUp extends Component {
       this.handleSubmit();
     } else {
       alert('Erreur dans la saisie du mot de passe.');
+      this.setState({
+        password: '',
+        confirm_password: ''
+      });
     }
   };
 
