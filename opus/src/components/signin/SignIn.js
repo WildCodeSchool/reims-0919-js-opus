@@ -10,7 +10,8 @@ export default class SignIn extends Component {
     this.state = {
       email: '',
       password: '',
-      token: null
+      token: null,
+      errorConn: null
     };
   }
 
@@ -29,9 +30,10 @@ export default class SignIn extends Component {
         if (this.state.token !== null) {
           this.props.history.push('/home');
         } else {
-          alert('Mot de passe incorrecte');
           this.setState({
-            password: ''
+            errorConn: 'Identifiant ou mot de passe incorrect',
+            password: '',
+            email: ''
           });
         }
       })
@@ -58,6 +60,8 @@ export default class SignIn extends Component {
         <Link to="signup">
           <img className="logoCommunOpus" src={logo} alt="logo OPUS"></img>
         </Link>
+        <p className="slogan">"Rendez-vous avec l'avenir"</p>
+        <h5 className="titleConnection">Connectez-vous</h5>
         <form className="containerFormSignIn" onSubmit={this.handleSubmit}>
           <input
             className="inputSignIn"
@@ -75,6 +79,7 @@ export default class SignIn extends Component {
             value={this.state.password}
             name="password"
           />
+          <p className="infoErrorConn">{this.state.errorConn}</p>
           <input
             className="btnSignIn"
             type="button"
@@ -82,6 +87,10 @@ export default class SignIn extends Component {
             onClick={this.loginUser}
           />
         </form>
+        <div className="separator"></div>
+        <Link to="signup">
+          <input className="btnSignUp" type="button" value="Créer un Compte" />
+        </Link>
       </>
     );
   }
