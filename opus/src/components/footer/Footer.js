@@ -7,7 +7,7 @@ class Footer extends React.Component {
     return (
       <div className="menu-footer">
         <nav className="footer">
-          <Link to="home">
+          <Link to="/home">
             <img
               src="https://i.ibb.co/Gkt8z0S/logo-OPUS-sans-fond-100px100px.png"
               alt="logo home"
@@ -21,7 +21,7 @@ class Footer extends React.Component {
             src="https://i.ibb.co/NTJ5q2F/Mes-Messages-Rose.png"
             alt="logo chat"
           />
-          <Link to="postoffer">
+          <Link to="/postoffer">
             <img
               src="https://i.ibb.co/YycpBpc/profile-rose-png.png"
               alt="logo profil"
