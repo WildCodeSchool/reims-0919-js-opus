@@ -8,32 +8,20 @@ import SignUp from './components/singnup/SignUp';
 import SignIn from './components/signin/SignIn';
 import Footer from './components/footer/Footer';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      offers: [],
-      isLoaded: false,
-      email: '',
-      password: ''
-    };
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <Switch>
-            <Route exact path="/" component={SignIn} />
-            <Route exact path="/home" component={Directory} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/postoffer" component={FormPostOffer} />
-          </Switch>
-        </Router>
-        <Footer />
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route exact path="/" component={SignIn} />
+          <Route exact path="/home" component={Directory} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/postoffer" component={FormPostOffer} />
+        </Switch>
+      </Router>
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
