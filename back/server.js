@@ -29,6 +29,7 @@ app.listen(port, err => {
 //GET OFFERT /////////////////////////////////////////////////
 app.get('/offers', (req, res) => {
   connection.query('SELECT * from offer', (err, results) => {
+    console.log(err);
     if (err) {
       res.status(500).send('Error server 500');
     } else {
