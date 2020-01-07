@@ -88,7 +88,7 @@ export default class SignIn extends Component {
           />
         </form>
         <div className="separator"></div>
-        <Link to="signup">
+        <Link to="/signup">
           <input className="btnSignUp" type="button" value="Créer un Compte" />
         </Link>
       </>

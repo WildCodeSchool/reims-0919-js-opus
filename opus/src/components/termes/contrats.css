@@ -1,0 +1,28 @@
+.titleConnection {
+    text-align: center;
+    margin: 0.7em;
+    color: rgb(36, 35, 35);
+}
+
+.subTitleConnection {
+    text-align: left;
+    margin: 0.7em;
+}
+
+.subSubTitleConnection {
+    text-align: left;
+    margin: 0.9em;
+}
+
+.paragrphContract {
+    text-align: justify;
+    margin: 0.7em;
+    color: rgb(87, 84, 84);
+}
+
+.listContrat {
+    list-style-type: upper-roman;
+    text-align: left;
+    margin-left: 3em;
+    color: rgb(87, 84, 84);
+}

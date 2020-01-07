@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from './logo-OPUS.png';
 import './signUp.css';
@@ -148,6 +149,10 @@ export default class SignUp extends Component {
             <input type="checkbox" id="accept" required></input>
             <label htmlFor="accept">J'accepte les termes CGU et CGV</label>
           </div>
+
+          <Link to="/contrats">
+            <p>Lire les termes du contrat</p>
+          </Link>
 
           <input
             className="btnSignUp"
