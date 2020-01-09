@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import './Offer.css';
 
 const Offer = ({
@@ -12,7 +12,9 @@ const Offer = ({
 }) => {
   return (
     <div className="card">
-      <img src={picture} alt={society_name} className="picture" />
+      <Link to="offerDetail">
+        <img src={picture} alt={society_name} className="picture" />
+      </Link>
       <img
         src="https://i.ibb.co/9bsMMn3/coeur-rose-2.png"
         alt="favori"
