@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Footer from '../footer/Footer';
 
 import './FormPostOffer.css';
 
@@ -167,6 +168,7 @@ class FormPostOffer extends React.Component {
             onClick={this.postNewOffer}
           />
         </form>
+        <Footer />
       </div>
     );
   }
