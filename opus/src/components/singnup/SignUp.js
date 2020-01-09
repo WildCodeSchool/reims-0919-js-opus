@@ -151,7 +151,7 @@ export default class SignUp extends Component {
           </div>
 
           <Link to="/contrats">
-            <p>Lire les termes du contrat</p>
+            <p className="readContract">Lire les termes du contrat</p>
           </Link>
 
           <input
