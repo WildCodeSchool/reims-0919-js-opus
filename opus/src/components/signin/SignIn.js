@@ -3,14 +3,19 @@ import axios from 'axios';
 import logo from '../singnup/logo-OPUS.png';
 import './SignIn.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { storeToken } from '../../redux/Reducer';
 
-export default class SignIn extends Component {
+const mapDispatchToProps = dispatch => ({
+  storeToken: token => dispatch(storeToken(token))
+});
+
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      password: '',
-      token: null
+      password: ''
     };
   }
 
@@ -21,22 +26,19 @@ export default class SignIn extends Component {
         password: this.state.password
       })
       .then(res => {
-        console.log(res);
-        res.data.token &&
-          this.setState({
-            token: res.data.token
-          });
-        if (this.state.token !== null) {
+        res.data.token && this.props.storeToken(res.data.token);
+        if (res.data.token) {
           this.props.history.push('/home');
         } else {
-          alert('Mot de passe incorrecte');
+          alert('Mot de passe ou Email incorrecte');
           this.setState({
-            password: ''
+            password: '',
+            email: ''
           });
         }
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -86,3 +88,5 @@ export default class SignIn extends Component {
     );
   }
 }
+
+export default connect(null, mapDispatchToProps)(SignIn);
