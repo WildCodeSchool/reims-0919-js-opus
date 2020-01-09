@@ -1,26 +1,15 @@
 import React from 'react';
 import './App.css';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Directory from './components/directory/Directory';
 import FormPostOffer from './components/formPostOffer/FormPostOffer';
 import SignUp from './components/singnup/SignUp';
 import SignIn from './components/signin/SignIn';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      offers: [],
-      isLoaded: false,
-      email: '',
-      password: ''
-    };
-  }
-
-  render() {
-    return (
-      <div className="App">
+const App = () => {
+  return (
+    <div className="App">
         <Router>
           <Switch>
             <Route exact path="/" component={SignIn} />
@@ -30,8 +19,7 @@ class App extends React.Component {
           </Switch>
         </Router>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default App;
