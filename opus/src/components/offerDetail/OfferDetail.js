@@ -1,14 +1,10 @@
 import React from 'react';
-import './offerDetail.css';
+import './OfferDetail.css';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-class offerDetail extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class OfferDetail extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
   }
@@ -92,4 +88,4 @@ class offerDetail extends React.Component {
   }
 }
 
-export default offerDetail;
+export default OfferDetail;

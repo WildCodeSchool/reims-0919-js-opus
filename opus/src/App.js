@@ -7,7 +7,7 @@ import FormPostOffer from './components/formPostOffer/FormPostOffer';
 import SignUp from './components/singnup/SignUp';
 import SignIn from './components/signin/SignIn';
 import Footer from './components/footer/Footer';
-import offerDetail from './components/offerDetail/offerDetail';
+import OfferDetail from './components/offerDetail/OfferDetail';
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
         <Route exact path="/home" component={Directory} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/postoffer" component={FormPostOffer} />
-        <Route exact path="/offerDetail" component={offerDetail} />
+        <Route exact path="/offerDetail" component={OfferDetail} />
       </Switch>
 
       <Footer />
