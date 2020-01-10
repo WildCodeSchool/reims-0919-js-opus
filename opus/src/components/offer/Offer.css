@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 1rem 0.75rem;
@@ -24,8 +25,8 @@
 .logo-favori {
   position: absolute;
   height: 8vw;
-  place-self: flex-end;
-  right: 1.75rem;
+  width: 6vh;
+  right: 1rem;
   margin-top: 0.4rem;
 }
 

@@ -11,16 +11,14 @@ import Contrats from './components/termes/Contrats';
 const App = () => {
   return (
     <div className="App">
-        <Router>
-          <Switch>
-            <Route exact path="/" component={SignIn} />
-            <Route exact path="/home" component={Directory} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/postoffer" component={FormPostOffer} />
-            <Route exact path="/contrats" component={Contrats} />
-          </Switch>
-        </Router>
-      </div>
+      <Switch>
+        <Route exact path="/" component={SignIn} />
+        <Route exact path="/home" component={Directory} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/postoffer" component={FormPostOffer} />
+        <Route exact path="/contrats" component={Contrats} />
+      </Switch>
+    </div>
   );
 };
 

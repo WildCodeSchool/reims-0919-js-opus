@@ -47,16 +47,16 @@ class Directory extends React.Component {
     } else {
       return (
         <>
-          <Header
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            searchCity={this.state.searchCity}
-          />
           <div className="offers-display">
             {offers.map(({ id, ...otherOfferSelection }, index) => (
               <Offer key={index} {...otherOfferSelection} />
             ))}
           </div>
+          <Header
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            searchCity={this.state.searchCity}
+          />
           <Footer />
         </>
       );
