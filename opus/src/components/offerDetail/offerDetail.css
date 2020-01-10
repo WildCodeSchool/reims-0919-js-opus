@@ -1,7 +1,8 @@
 .officeImage {
-  background-color: black;
   width: 100%;
-  height: 35vw;
+  height: 60vw;
+  margin-bottom: 4%;
+  margin-top: -2%;
 }
 
 .divImage {
@@ -9,41 +10,63 @@
 }
 
 .detail {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   height: 12vh;
 }
 
-.info {
+.infoDetail {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: auto;
+  margin: 3%;
 }
 
 h1 {
   text-align: left;
-  margin-left: 12px;
+  margin-left: 3%;
 }
 
 h2 {
   text-align: left;
-  margin-left: 12px;
+  margin-left: 3%;
 }
 
 hr {
   width: 30%;
   position: absolute;
-  left: 10px;
+  left: 3%;
+}
+
+.divTextDetail {
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .textDetail {
   text-align: justify;
-  margin: 10px;
+  margin: 3%;
 }
 
-.signIn {
+.sliderPhotos h2 {
+  margin-bottom: 6%;
+}
+
+.equipements {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.equipements h2 {
+  margin-bottom: 6%;
+  margin-top: 15%;
+}
+
+.equipements p {
+  text-align: justify;
+  margin: 3%;
+}
+
+.validateOffer {
   display: block;
   margin: auto;
   height: 2.8em;
@@ -52,5 +75,5 @@ hr {
   color: #eee;
   font-size: 1.2em;
   width: 80%;
-  margin-top: 10px;
+  margin-top: 5%;
 }
