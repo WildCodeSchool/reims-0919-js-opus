@@ -3,10 +3,22 @@
   width: 20%;
 }
 
+.slogan {
+  margin-top: .8em;
+  ;
+  color: #b3aeae;
+}
+
+.titleConnection {
+  font-size: 1.7em;
+  color: #575454;
+  margin-top: 2em;
+}
+
 .containerFormSignIn {
   display: flex;
   flex-direction: column;
-  margin: 3em;
+  margin: 1em 3em 3em 3em;
 }
 
 .inputSignIn {
@@ -18,10 +30,33 @@
 }
 
 .btnSignIn {
-  margin: 2em 0.7em 0 0.7em;
+  margin: 1.4em 0.7em 0 0.7em;
   height: 2.8em;
+  border-radius: 7px;
+  background-color: #bd3d52;
+  color: #eee;
+  font-size: 1.2em;
+}
+
+.separator {
+  height: .1em;
+  width: 22em;
+  margin: -20px auto 40px;
+  background-color: #afafaf;
+}
+
+.btnSignUp {
+  margin: 0em 0.7em 0 0.7em;
+  height: 2.8em;
+  width: 15em;
   border-radius: 7px;
   background-color: #83a5e1;
   color: #eee;
   font-size: 1.2em;
+}
+
+.infoErrorConn {
+  color: red;
+  position: absolute;
+  top: 30em;
 }

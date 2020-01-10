@@ -6,8 +6,9 @@ import Directory from './components/directory/Directory';
 import FormPostOffer from './components/formPostOffer/FormPostOffer';
 import SignUp from './components/singnup/SignUp';
 import SignIn from './components/signin/SignIn';
-import Footer from './components/footer/Footer';
 import offerDetail from './components/offerDetail/offerDetail';
+import Contrats from './components/termes/Contrats';
+
 
 const App = () => {
   return (
@@ -18,9 +19,8 @@ const App = () => {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/postoffer" component={FormPostOffer} />
         <Route exact path="/offerDetail" component={offerDetail} />
+        <Route exact path="/contrats" component={Contrats} />
       </Switch>
-
-      <Footer />
     </div>
   );
 };

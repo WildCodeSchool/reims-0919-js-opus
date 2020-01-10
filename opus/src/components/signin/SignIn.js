@@ -3,14 +3,20 @@ import axios from 'axios';
 import logo from '../singnup/logo-OPUS.png';
 import './SignIn.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { storeToken } from '../../redux/Reducer';
 
-export default class SignIn extends Component {
+const mapDispatchToProps = dispatch => ({
+  storeToken: token => dispatch(storeToken(token))
+});
+
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
-      token: null
+      errorConn: null
     };
   }
 
@@ -21,22 +27,19 @@ export default class SignIn extends Component {
         password: this.state.password
       })
       .then(res => {
-        console.log(res);
-        res.data.token &&
-          this.setState({
-            token: res.data.token
-          });
-        if (this.state.token !== null) {
+        res.data.token && this.props.storeToken(res.data.token);
+        if (res.data.token) {
           this.props.history.push('/home');
         } else {
-          alert('Mot de passe incorrecte');
           this.setState({
-            password: ''
+            errorConn: 'Identifiant ou mot de passe incorrect',
+            password: '',
+            email: ''
           });
         }
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -58,6 +61,8 @@ export default class SignIn extends Component {
         <Link to="signup">
           <img className="logoCommunOpus" src={logo} alt="logo OPUS"></img>
         </Link>
+        <p className="slogan">"Rendez-vous avec l'avenir"</p>
+        <h5 className="titleConnection">Connectez-vous</h5>
         <form className="containerFormSignIn" onSubmit={this.handleSubmit}>
           <input
             className="inputSignIn"
@@ -75,6 +80,7 @@ export default class SignIn extends Component {
             value={this.state.password}
             name="password"
           />
+          <p className="infoErrorConn">{this.state.errorConn}</p>
           <input
             className="btnSignIn"
             type="button"
@@ -82,7 +88,13 @@ export default class SignIn extends Component {
             onClick={this.loginUser}
           />
         </form>
+        <div className="separator"></div>
+        <Link to="/signup">
+          <input className="btnSignUp" type="button" value="Créer un Compte" />
+        </Link>
       </>
     );
   }
 }
+
+export default connect(null, mapDispatchToProps)(SignIn);

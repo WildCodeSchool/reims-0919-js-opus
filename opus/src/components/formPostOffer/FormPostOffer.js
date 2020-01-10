@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Footer from '../footer/Footer';
 
 import './FormPostOffer.css';
 
@@ -11,8 +12,8 @@ class FormPostOffer extends React.Component {
       society_name: '',
       title: '',
       picture: '',
-      price: null,
-      capacity: null,
+      price: '',
+      capacity: '',
       offer_description: '',
       address_street: '',
       address_city: '',
@@ -167,6 +168,7 @@ class FormPostOffer extends React.Component {
             onClick={this.postNewOffer}
           />
         </form>
+        <Footer />
       </div>
     );
   }

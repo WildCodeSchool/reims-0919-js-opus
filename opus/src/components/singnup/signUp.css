@@ -17,6 +17,10 @@
     padding-left: .5em;
 }
 
+.readContract {
+    margin: 2em 0 2em 0;
+}
+
 .btnSignUp {
     margin: 2em .7em 0 .7em;
     height: 2.8em;

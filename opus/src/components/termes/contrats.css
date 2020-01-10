@@ -1,0 +1,52 @@
+.titleConnection {
+    text-align: center;
+    margin: 0.7em;
+    color: rgb(36, 35, 35);
+}
+
+.subTitleConnection {
+    text-align: left;
+    margin: 0.7em;
+}
+
+.subSubTitleConnection {
+    text-align: left;
+    margin: 0.9em;
+}
+
+.backHome {
+    position: fixed;
+    top: 0.2em;
+    right: 0.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4em;
+    width: 4em;
+    border-radius: 50%;
+    outline: none;
+    background-color: rgba(34, 34, 34, .8);
+    color: rgb(240, 240, 240);
+}
+
+.paragrphContract {
+    text-align: justify;
+    margin: 0.7em;
+    color: rgb(87, 84, 84);
+}
+
+ol.listContrat {
+    list-style-type: upper-roman;
+    text-align: justify;
+    margin-left: 3em;
+    margin-right: 3em;
+
+    color: rgb(87, 84, 84);
+}
+
+ul.listContrat {
+    text-align: justify;
+    margin-left: 3em;
+    margin-right: 3em;
+    color: rgb(87, 84, 84);
+}
