@@ -43,3 +43,14 @@
 .iconeFilter {
   width: 34%;
 }
+
+.aaa {
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  top: 0;
+  height: 25%;
+  padding-top: 2%;
+  box-shadow: 0px 4px 7px -4px rgba(130, 130, 130, 1);
+}
