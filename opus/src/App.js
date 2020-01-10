@@ -6,7 +6,7 @@ import Directory from './components/directory/Directory';
 import FormPostOffer from './components/formPostOffer/FormPostOffer';
 import SignUp from './components/singnup/SignUp';
 import SignIn from './components/signin/SignIn';
-import OfferDetail from './components/OfferDetail/OfferDetail';
+import OfferDetail from './components/offerDetail/OfferDetail';
 import Contrats from './components/termes/Contrats';
 
 const App = () => {
