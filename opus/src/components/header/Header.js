@@ -8,18 +8,24 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+      show: false,
+      classFilter: 'menu-header'
     };
     this.showFilters = this.showFilters.bind(this);
   }
   showFilters() {
-    this.setState({ show: true });
+    this.setState({ show: !this.state.show });
+    if (this.state.show) {
+      this.state.classFilter = 'menu-header';
+    } else {
+      this.state.classFilter = 'aaa';
+    }
   }
 
   render() {
     return (
-      // <div className="aaa">
-      <div className="menu-header">
+      <div className={this.state.classFilter}>
+        {/* div className="menu-header"> */}
         <nav className="header">
           <input
             className="searchOffer"
@@ -41,11 +47,10 @@ export default class Header extends Component {
             Filtre
           </button>
         </nav>
-
-        {/* <button className="btnFilter">
-            <img className="iconeFilter" src={filter} alt="icone" />
-            Filtre
-          </button> */}
+        <button className="btnFilter">
+          <img className="iconeFilter" src={filter} alt="icone" />
+          Filtre
+        </button>
       </div>
     );
   }
