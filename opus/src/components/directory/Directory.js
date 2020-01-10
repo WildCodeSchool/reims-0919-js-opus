@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Directory.css';
 import Header from '../header/Header';
 import Offer from '../offer/Offer';
+import Footer from '../footer/Footer';
 
 class Directory extends React.Component {
   constructor(props) {
@@ -44,7 +45,6 @@ class Directory extends React.Component {
     if (!isLoaded) {
       return <h1>Loading...</h1>;
     } else {
-      console.log(offers);
       return (
         <>
           <Header
@@ -57,6 +57,7 @@ class Directory extends React.Component {
               <Offer key={index} {...otherOfferSelection} />
             ))}
           </div>
+          <Footer />
         </>
       );
     }
