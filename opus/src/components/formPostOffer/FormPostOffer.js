@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import './FormPostOffer.css';
 
-const mapDispatchToProps = state => ({
+const mapStateToProps = state => ({
   token: state.token
 });
 
@@ -188,4 +188,4 @@ class FormPostOffer extends React.Component {
   }
 }
 
-export default connect(mapDispatchToProps)(FormPostOffer);
+export default connect(mapStateToProps)(FormPostOffer);
