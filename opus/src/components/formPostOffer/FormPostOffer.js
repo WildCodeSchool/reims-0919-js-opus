@@ -1,8 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import Footer from '../footer/Footer';
+import { connect } from 'react-redux';
 
 import './FormPostOffer.css';
+
+const mapStateToProps = state => ({
+  token: state.token
+});
 
 class FormPostOffer extends React.Component {
   constructor(props) {
@@ -24,41 +29,50 @@ class FormPostOffer extends React.Component {
 
   postNewOffer = () => {
     axios
-      .post('http://localhost:8000/offers/add', {
-        society_name: this.state.society_name,
-        title: this.state.title,
-        picture: this.state.picture,
-        price: this.state.price,
-        capacity: this.state.capacity,
-        offer_description: this.state.offer_description,
-        address_street: this.state.address_street,
-        address_city: this.state.address_city,
-        zip_code: this.state.zip_code,
-        country: this.state.country
-      })
-      .then(function(response) {
+      .post(
+        'http://localhost:8000/offers/add',
+        {
+          society_name: this.state.society_name,
+          title: this.state.title,
+          picture: this.state.picture,
+          price: this.state.price,
+          capacity: this.state.capacity,
+          offer_description: this.state.offer_description,
+          address_street: this.state.address_street,
+          address_city: this.state.address_city,
+          zip_code: this.state.zip_code,
+          country: this.state.country
+        },
+        {
+          headers: {
+            Authorization: this.props.token
+          }
+        }
+      )
+      .then(response => {
         console.log(response);
+        this.setState({
+          society_name: '',
+          title: '',
+          picture: '',
+          price: '',
+          capacity: '',
+          offer_description: '',
+          address_street: '',
+          address_city: '',
+          zip_code: '',
+          country: ''
+        });
+        this.props.history.push('/home');
       })
-      .catch(function(error) {
-        console.log(error);
+      .catch(error => {
+        console.error(error);
+        alert("Echec de l'envoie du formulaire");
       });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-
-    this.setState({
-      society_name: '',
-      title: '',
-      picture: '',
-      price: null,
-      capacity: null,
-      offer_description: '',
-      address_street: '',
-      address_city: '',
-      zip_code: '',
-      country: ''
-    });
   };
 
   handleChange = event => {
@@ -174,4 +188,4 @@ class FormPostOffer extends React.Component {
   }
 }
 
-export default FormPostOffer;
+export default connect(mapStateToProps)(FormPostOffer);
