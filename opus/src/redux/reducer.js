@@ -2,7 +2,7 @@ const initialState = {
   token: null
 };
 
-const AuthReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'STORE_TOKEN':
       return { ...state, token: `Bearer ${action.payload}` };
@@ -16,4 +16,4 @@ export const storeToken = token => ({
   payload: token
 });
 
-export default AuthReducer;
+export default authReducer;
