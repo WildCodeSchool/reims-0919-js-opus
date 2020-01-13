@@ -4,7 +4,7 @@ import logo from '../singnup/logo-OPUS.png';
 import './SignIn.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { storeToken } from '../../redux/Reducer';
+import { storeToken } from '../../redux/reducer';
 
 const mapDispatchToProps = dispatch => ({
   storeToken: token => dispatch(storeToken(token))
