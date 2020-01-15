@@ -29,11 +29,31 @@ app.listen(port, err => {
 //GET OFFERT /////////////////////////////////////////////////
 app.get('/offers', (req, res) => {
   connection.query('SELECT * from offer', (err, results) => {
-    console.log(err);
     if (err) {
       res.status(500).send('Error server 500');
     } else {
       res.json(results);
+    }
+  });
+});
+
+//GET USER INFORMATION ///////////////////////////////////////
+app.get('/user', (req, res) => {
+  jwt.verify(req.token, key, (err, authData) => {
+    if (err) {
+      res.sendStatus(401);
+    } else {
+      connection.query(
+        'SELECT * FROM user WHERE email = ?',
+        authData.email,
+        (err, results) => {
+          if (err) {
+            res.status(500).send('Error server 500');
+          } else {
+            res.json(results);
+          }
+        }
+      );
     }
   });
 });
