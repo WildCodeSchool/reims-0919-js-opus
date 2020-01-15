@@ -29,11 +29,31 @@ app.listen(port, err => {
 //GET OFFERT /////////////////////////////////////////////////
 app.get('/offers', (req, res) => {
   connection.query('SELECT * from offer', (err, results) => {
-    console.log(err);
     if (err) {
       res.status(500).send('Error server 500');
     } else {
       res.json(results);
+    }
+  });
+});
+
+//GET USER INFORMATION ///////////////////////////////////////
+app.get('/user', (req, res) => {
+  jwt.verify(req.token, key, (err, authData) => {
+    if (err) {
+      res.sendStatus(401);
+    } else {
+      connection.query(
+        'SELECT * FROM user WHERE email = ?',
+        authData.email,
+        (err, results) => {
+          if (err) {
+            res.status(500).send('Error server 500');
+          } else {
+            res.json(results);
+          }
+        }
+      );
     }
   });
 });
@@ -45,18 +65,44 @@ app.post('/offers/add', verifyToken, (req, res) => {
     if (err) {
       res.sendStatus(401);
     } else {
-      res.json({
-        message: 'Post created',
-        authData
-      });
-      connection.query('INSERT INTO offer SET ?', offerAdd, (err, results) => {
-        if (err) {
-          console.log(err);
-          res.status(500).send("Erreur lors de l'ajout d'une offre");
-        } else {
-          res.sendStatus(200);
+      connection.query(
+        'SELECT id_user FROM user WHERE email = ?',
+        authData.email,
+        (err, resultsId) => {
+          if (err) {
+            console.error(err);
+            res.status(500).send("Erreur lors de l'ajout d'une offre");
+          } else {
+            connection.query(
+              'INSERT INTO offer SET ?',
+              {
+                society_name: offerAdd.society_name,
+                title: offerAdd.title,
+                picture: offerAdd.picture,
+                price: offerAdd.price,
+                capacity: offerAdd.capacity,
+                offer_description: offerAdd.offer_description,
+                address_street: offerAdd.address_street,
+                address_city: offerAdd.address_city,
+                zip_code: offerAdd.zip_code,
+                country: offerAdd.country,
+                id_user: resultsId[0].id_user
+              },
+              (err, results) => {
+                if (err) {
+                  console.error(err);
+                  res.status(500).send("Erreur lors de l'ajout d'une offre");
+                } else {
+                  res.status(200).json({
+                    message: 'Post created',
+                    authData
+                  });
+                }
+              }
+            );
+          }
         }
-      });
+      );
     }
   });
 });

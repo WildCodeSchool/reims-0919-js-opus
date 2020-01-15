@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from './logo-OPUS.png';
 import './signUp.css';
+import { connect } from 'react-redux';
+import { storeToken } from '../../redux/reducer';
 
-export default class SignUp extends Component {
+const mapDispatchToProps = dispatch => ({
+  storeToken: token => dispatch(storeToken(token))
+});
+
+class SignUp extends Component {
   state = {
     firstname: '',
     lastname: '',
@@ -13,8 +19,7 @@ export default class SignUp extends Component {
     password: '',
     city: '',
     confirm_password: '',
-    country: '',
-    token: null
+    country: ''
   };
 
   postNewUser = () => {
@@ -29,12 +34,8 @@ export default class SignUp extends Component {
         country: this.state.country
       })
       .then(res => {
-        console.log(res);
-        res.data.token &&
-          this.setState({
-            token: `Bearer ${res.data.token}`
-          });
-        if (this.state.token !== null) {
+        res.data.token && this.props.storeToken(res.data.token);
+        if (res.data.token) {
           this.props.history.push('/home');
         }
       })
@@ -165,3 +166,5 @@ export default class SignUp extends Component {
     );
   }
 }
+
+export default connect(null, mapDispatchToProps)(SignUp);

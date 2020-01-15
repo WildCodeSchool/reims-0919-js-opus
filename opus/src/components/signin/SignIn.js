@@ -4,7 +4,7 @@ import logo from '../singnup/logo-OPUS.png';
 import './SignIn.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { storeToken } from '../../redux/Reducer';
+import { storeToken } from '../../redux/reducer';
 
 const mapDispatchToProps = dispatch => ({
   storeToken: token => dispatch(storeToken(token))
@@ -29,7 +29,7 @@ class SignIn extends Component {
       .then(res => {
         res.data.token && this.props.storeToken(res.data.token);
         if (res.data.token) {
-          this.props.history.push('/home');
+          this.props.history.push('/loader');
         } else {
           this.setState({
             errorConn: 'Identifiant ou mot de passe incorrect',

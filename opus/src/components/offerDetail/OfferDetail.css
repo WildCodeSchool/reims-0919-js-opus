@@ -1,0 +1,79 @@
+.officeImage {
+  width: 100%;
+  height: 60vw;
+  margin-bottom: 4%;
+  margin-top: -2%;
+}
+
+.divImage {
+  width: 100%;
+}
+
+.detail {
+  width: 100%;
+  height: 12vh;
+}
+
+.infoDetail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3%;
+}
+
+h1 {
+  text-align: left;
+  margin-left: 3%;
+}
+
+h2 {
+  text-align: left;
+  margin-left: 3%;
+}
+
+hr {
+  width: 30%;
+  position: absolute;
+  left: 3%;
+}
+
+.divTextDetail {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.textDetail {
+  text-align: justify;
+  margin: 3%;
+}
+
+.sliderPhotos h2 {
+  margin-bottom: 6%;
+}
+
+.equipements {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.equipements h2 {
+  margin-bottom: 6%;
+  margin-top: 15%;
+}
+
+.equipements p {
+  text-align: justify;
+  margin: 3%;
+}
+
+.validateOffer {
+  display: block;
+  margin: auto;
+  height: 2.8em;
+  border-radius: 7px;
+  background-color: #bd3d52;
+  color: #eee;
+  font-size: 1.2em;
+  width: 80%;
+  margin-top: 5%;
+}
