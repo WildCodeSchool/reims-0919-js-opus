@@ -26,13 +26,83 @@ app.listen(port, err => {
   console.log(`Server is listening on ${port}`);
 });
 
-//GET OFFERT /////////////////////////////////////////////////
-app.get('/offers', (req, res) => {
-  connection.query('SELECT * from offer', (err, results) => {
+//GET OFFERT + PARAMS /////////////////////////////////////////////////
+app.get('/offers', verifyToken, (req, res) => {
+  jwt.verify(req.token, key, (err, authData) => {
     if (err) {
-      res.status(500).send('Error server 500');
+      res.sendStatus(401);
     } else {
-      res.json(results);
+      connection.query(
+        'SELECT id_user FROM user WHERE email = ?',
+        authData.email,
+        (err, results) => {
+          if (err) {
+            console.error(err);
+            res.status(500).send('Error server 500');
+          } else {
+            const citySearch = req.query.city;
+            const personNumberSearch = req.query.person;
+            const minPriceSearch = req.query.minprice;
+            const maxPriceSearch = req.query.maxprice;
+            let search = [results[0].id_user];
+            let commandLine = '';
+            if (citySearch !== undefined) {
+              search.push(citySearch);
+              commandLine += ' AND address_city = ?';
+            }
+            if (personNumberSearch !== undefined) {
+              search.push(personNumberSearch);
+              commandLine += ' AND capacity > ?';
+            }
+            if (minPriceSearch !== undefined && maxPriceSearch !== undefined) {
+              search.push(minPriceSearch, maxPriceSearch);
+              commandLine += ' AND price BETWEEN ? AND ? ORDER BY price ASC';
+            }
+            connection.query(
+              `SELECT * FROM offer WHERE id_user != ? ${commandLine}`,
+              search,
+              (err, offerResults) => {
+                if (err) {
+                  res.status(500).send('Error server 500');
+                } else {
+                  res.json(offerResults);
+                }
+              }
+            );
+          }
+        }
+      );
+    }
+  });
+});
+
+//GET USER OFFERT /////////////////////////////////////////////////
+app.get('/user/offers', verifyToken, (req, res) => {
+  jwt.verify(req.token, key, (err, authData) => {
+    if (err) {
+      res.sendStatus(401);
+    } else {
+      connection.query(
+        'SELECT id_user FROM user WHERE email = ?',
+        authData.email,
+        (err, results) => {
+          if (err) {
+            res.status(500).send('Error server 500');
+          } else {
+            connection.query(
+              'SELECT * FROM offer WHERE id_user = ?',
+              results[0].id_user,
+              (err, offerResults) => {
+                if (err) {
+                  res.status(500).send('Error server 500');
+                } else {
+                  res.json(offerResults);
+                }
+              }
+            );
+          }
+        }
+      );
     }
   });
 });
@@ -198,21 +268,6 @@ app.post('/users/signin', (req, res) => {
   );
 });
 
-// SEARCH CITY /////////////////////////////////////////////////
-app.get('/offers/:city', (req, res) => {
-  const citySearch = req.params.city;
-  connection.query(
-    `SELECT * from offer where address_city = ?`,
-    [citySearch],
-    (err, results) => {
-      if (err) {
-        res.status(500).send('Error server 500');
-      } else {
-        res.json(results);
-      }
-    }
-  );
-});
 // SEARCH ID /////////////////////////////////////////////////
 app.get('/offers/:id', (req, res) => {
   const idSearch = req.params.id;
