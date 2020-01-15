@@ -29,7 +29,7 @@ class SignIn extends Component {
       .then(res => {
         res.data.token && this.props.storeToken(res.data.token);
         if (res.data.token) {
-          this.props.history.push('/home');
+          this.props.history.push('/loader');
         } else {
           this.setState({
             errorConn: 'Identifiant ou mot de passe incorrect',
