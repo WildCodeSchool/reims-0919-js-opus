@@ -10,7 +10,7 @@
 .footer {
   display: flex;
   justify-content: space-around;
-  padding: 5px;
+  padding: 7px 5px 5px 5px;
 }
 
 .footer img {

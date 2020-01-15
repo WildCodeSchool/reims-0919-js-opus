@@ -15,11 +15,13 @@ const App = () => {
     <div className="App">
       <Switch>
         <Route exact path="/" component={SignIn} />
+
         <Route exact path="/loader" component={Loading} />
         <Route exact path="/home" component={Directory} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/postoffer" component={FormPostOffer} />
         <Route exact path="/offerDetail" component={OfferDetail} />
+
         <Route exact path="/contrats" component={Contrats} />
       </Switch>
     </div>
