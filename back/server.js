@@ -56,7 +56,7 @@ app.get('/offers', verifyToken, (req, res) => {
             }
             if (minPriceSearch !== undefined && maxPriceSearch !== undefined) {
               search.push(minPriceSearch, maxPriceSearch);
-              commandLine += ' AND price BETWEEN ? AND ?';
+              commandLine += ' AND price BETWEEN ? AND ? ORDER BY price ASC';
             }
             connection.query(
               `SELECT * FROM offer WHERE id_user != ? ${commandLine}`,
