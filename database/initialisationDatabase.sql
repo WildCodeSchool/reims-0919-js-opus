@@ -25,3 +25,11 @@ CREATE TABLE `offer` (
     `id_user` int NOT NULL,
     FOREIGN KEY (id_user) REFERENCES user(id_user)
 );
+CREATE TABLE `booking` (
+    `id_offer_user`  int auto_increment NOT NULL PRIMARY KEY,
+    `reservation_date` DATETIME NOT NULL,
+    `id_user` int NOT NULL,
+    `id_offer` int NOT NULL,
+    FOREIGN KEY (id_user) REFERENCES user(id_user),
+    FOREIGN KEY (id_offer) REFERENCES offer(id_offer)
+);
