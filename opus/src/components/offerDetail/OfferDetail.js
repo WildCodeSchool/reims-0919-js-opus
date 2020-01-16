@@ -56,18 +56,21 @@ class OfferDetail extends React.Component {
               <img
                 className="officeImage"
                 src="https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_960_720.jpg"
+                alt="office1"
               />
             </div>
             <div>
               <img
                 className="officeImage"
                 src="https://cdn.pixabay.com/photo/2015/05/15/14/22/conference-room-768441_960_720.jpg"
+                alt="office2"
               />
             </div>
             <div>
               <img
                 className="officeImage"
                 src="https://cdn.pixabay.com/photo/2017/03/28/12/06/chairs-2181916_960_720.jpg"
+                alt="office3"
               />
             </div>
           </Slider>

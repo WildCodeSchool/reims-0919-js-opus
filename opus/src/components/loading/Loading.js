@@ -2,6 +2,11 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 import axios from 'axios';
 import './Loading.css';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+  token: state.token
+});
 
 class Loading extends React.Component {
   constructor(props) {
@@ -18,7 +23,11 @@ class Loading extends React.Component {
 
   getUserName = () => {
     axios
-      .get('/user')
+      .get(`http://localhost:8000/user`, {
+        headers: {
+          Authorization: this.props.token
+        }
+      })
       .then(res => res.data)
       .then(data =>
         this.setState({
@@ -30,7 +39,7 @@ class Loading extends React.Component {
   render() {
     return (
       <div className="loader">
-        <p>Bonjour {this.getUserName}</p>
+        <p>Bonjour {this.state.userName && this.state.userName[0].firstname}</p>
         <Loader
           type="ThreeDots"
           color="#somecolor"
@@ -43,4 +52,4 @@ class Loading extends React.Component {
   }
 }
 
-export default Loading;
+export default connect(mapStateToProps)(Loading);
