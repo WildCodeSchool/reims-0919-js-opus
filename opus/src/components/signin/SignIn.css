@@ -4,8 +4,7 @@
 }
 
 .slogan {
-  margin-top: .8em;
-  ;
+  margin-top: 0.8em;
   color: #b3aeae;
 }
 
@@ -39,7 +38,7 @@
 }
 
 .separator {
-  height: .1em;
+  height: 0.1em;
   width: 22em;
   margin: -20px auto 40px;
   background-color: #afafaf;
@@ -58,5 +57,5 @@
 .infoErrorConn {
   color: red;
   position: absolute;
-  top: 30em;
+  top: 28em;
 }

@@ -20,7 +20,8 @@
 }
 
 .searchOffer {
-  background: url('https://i.ibb.co/TRJs2SZ/Loupe-rose-100x100px.png') no-repeat scroll 2%;
+  background: url('https://i.ibb.co/TRJs2SZ/Loupe-rose-100x100px.png') no-repeat
+    scroll 2%;
   background-size: 8%;
   padding-left: 5%;
   background-position-x: 1%;
@@ -52,7 +53,6 @@
 }
 
 /* ////////////////// FILTREs SUPLEMENTAIRES ////////////////////////////////*/
-
 
 .containerFilterOn {
   padding: 0;
@@ -102,8 +102,8 @@
 }
 
 .btnChange {
-  width: .8em;
-  height: .8em;
+  width: 0.8em;
+  height: 0.8em;
   margin: 0;
   padding: 0;
   border-radius: 50%;
@@ -117,7 +117,7 @@
 
 .titleFilter {
   padding: 0;
-  margin: 0 0 .6em 0;
+  margin: 0 0 0.6em 0;
 }
 
 .personnes {
@@ -133,7 +133,7 @@
   font-weight: bolder;
   border: 1px solid rgb(102, 99, 99);
   border-radius: 5px;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .inputChoiseNok {
@@ -144,7 +144,7 @@
   font-weight: bolder;
   border: 2px solid rgb(255, 0, 0);
   border-radius: 5px;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .choisePriceMore {
@@ -162,7 +162,7 @@
 }
 
 .iconeCalendar {
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
   position: relative;
   top: -0.1em;
   height: 2.4em;
