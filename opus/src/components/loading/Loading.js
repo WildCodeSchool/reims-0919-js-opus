@@ -18,7 +18,7 @@ class Loading extends React.Component {
 
   componentDidMount = () => {
     this.getUserName();
-    setTimeout(() => this.props.history.push('/home'), 4000);
+    setTimeout(() => this.props.history.push('/home'), 2000);
   };
 
   getUserName = () => {
@@ -45,7 +45,7 @@ class Loading extends React.Component {
           color="#somecolor"
           height={80}
           width={80}
-          timeout={4000}
+          timeout={2000}
         />
       </div>
     );
