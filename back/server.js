@@ -108,7 +108,7 @@ app.get('/user/offers', verifyToken, (req, res) => {
 });
 
 //GET USER INFORMATION ///////////////////////////////////////
-app.get('/user', (req, res) => {
+app.get('/user', verifyToken, (req, res) => {
   jwt.verify(req.token, key, (err, authData) => {
     if (err) {
       res.sendStatus(401);
