@@ -4,6 +4,11 @@ import './Directory.css';
 import Header from '../header/Header';
 import Offer from '../offer/Offer';
 import Footer from '../footer/Footer';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+  token: state.token
+});
 
 class Directory extends React.Component {
   constructor(props) {
@@ -21,7 +26,11 @@ class Directory extends React.Component {
 
   getOffers = () => {
     axios
-      .get(`http://localhost:8000/offers/${this.state.searchCity}`)
+      .get(`http://localhost:8000/offers/${this.state.searchCity}`, {
+        headers: {
+          Authorization: this.props.token
+        }
+      })
       .then(res => res.data)
       .then(data =>
         this.setState({
@@ -64,4 +73,4 @@ class Directory extends React.Component {
   }
 }
 
-export default Directory;
+export default connect(mapStateToProps)(Directory);
