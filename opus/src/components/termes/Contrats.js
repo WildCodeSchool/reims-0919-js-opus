@@ -13,7 +13,7 @@ export default class Contrats extends Component {
       <>
         <img src={logo} alt="logo OPUS"></img>
         <Link to="/signup">
-          <div className="backHome">Retour</div>
+          <div className="backHome">J'accepte les termes du contrat.</div>
         </Link>
         <h2 className="titleConnection">
           Conditions générales d’utilisation et de vente

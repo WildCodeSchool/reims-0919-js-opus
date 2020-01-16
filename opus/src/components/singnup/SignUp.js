@@ -146,14 +146,6 @@ class SignUp extends Component {
             value={this.state.society_name}
             name="society_name"
           />
-          <div>
-            <input type="checkbox" id="accept" required></input>
-            <label htmlFor="accept">J'accepte les termes CGU et CGV</label>
-          </div>
-
-          <Link to="/contrats">
-            <p className="readContract">Lire les termes du contrat</p>
-          </Link>
 
           <input
             className="btnSignUp"

@@ -16,16 +16,14 @@
 
 .backHome {
     position: fixed;
-    top: 0.2em;
-    right: 0.2em;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 4em;
-    width: 4em;
-    border-radius: 50%;
-    outline: none;
-    background-color: rgba(34, 34, 34, .8);
+    height: 2em;
+    width: 100%;
+    font-size: 1.3em;
+    background-color: rgba(189, 61, 82, .8);
     color: rgb(240, 240, 240);
 }
 
