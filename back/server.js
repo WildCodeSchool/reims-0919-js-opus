@@ -63,6 +63,7 @@ app.get('/offers', verifyToken, (req, res) => {
               search,
               (err, offerResults) => {
                 if (err) {
+                  console.error(err);
                   res.status(500).send('Error server 500');
                 } else {
                   res.json(offerResults);

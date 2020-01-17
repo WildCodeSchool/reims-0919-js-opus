@@ -9,6 +9,7 @@ import SignIn from './components/signin/SignIn';
 import OfferDetail from './components/offerDetail/OfferDetail';
 import Contrats from './components/termes/Contrats';
 import Loading from './components/loading/Loading';
+import Profile from './components/profile/Profile';
 
 const App = () => {
   return (
@@ -21,8 +22,8 @@ const App = () => {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/postoffer" component={FormPostOffer} />
         <Route exact path="/offerDetail" component={OfferDetail} />
-
         <Route exact path="/contrats" component={Contrats} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </div>
   );
