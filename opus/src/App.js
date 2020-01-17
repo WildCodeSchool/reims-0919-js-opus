@@ -11,6 +11,7 @@ import SignIn from './components/signin/SignIn';
 import OfferDetail from './components/offerDetail/OfferDetail';
 import Contrats from './components/termes/Contrats';
 import Loading from './components/loading/Loading';
+import Profile from './components/profile/Profile';
 
 const mapStateToProps = state => ({
   token: state.token
@@ -35,6 +36,7 @@ const App = props => {
         />
         <Route exact path="/offerDetail" component={OfferDetail} />
         <Route exact path="/contrats" component={Contrats} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </div>
   );

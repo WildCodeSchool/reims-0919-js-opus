@@ -21,7 +21,7 @@ class Footer extends React.Component {
             src="https://i.ibb.co/NTJ5q2F/Mes-Messages-Rose.png"
             alt="logo chat"
           />
-          <Link to="/postoffer">
+          <Link to="/profile">
             <img
               src="https://i.ibb.co/YycpBpc/profile-rose-png.png"
               alt="logo profil"

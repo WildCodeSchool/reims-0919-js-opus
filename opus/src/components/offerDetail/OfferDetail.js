@@ -43,7 +43,7 @@ class OfferDetail extends React.Component {
           </div>
         </div>
 
-        <hr />
+        <hr className="hrOfferDetail" />
         <div className="divTextDetail">
           <p className="textDetail">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
