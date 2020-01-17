@@ -20,11 +20,17 @@
   margin-bottom: 0.2rem;
 }
 
-.form-post-offer input,
+.form-post-offer input {
+  border-radius: 20px;
+  height: 2rem;
+  width: 70%;
+  margin-top: 3%;
+}
 .form-post-offer textarea {
-  border: none;
-  background-color: lightgrey;
-  border-radius: 0.3rem;
+  border-radius: 20px;
+  height: 2rem;
+  width: 70%;
+  margin-top: 3%;
 }
 
 .address {
@@ -47,14 +53,22 @@
   margin: 0;
 }
 
-.address input,
+.address input {
+  border-radius: 20px;
+  height: 2rem;
+  width: 70%;
+  margin-top: 3%;
+}
 .address textarea {
-  width: 40vw;
-  margin: 1.2rem;
+  border-radius: 20px;
+  height: 2rem;
+  width: 70%;
+  margin-top: 3%;
 }
 
 .sendform {
-  margin: 2rem;
-  background-color: transparent !important;
-  font-weight: bold;
+  border-radius: 20px;
+  width: 8%;
+  height: 3rem;
+  background-color: #83a5e1;
 }
