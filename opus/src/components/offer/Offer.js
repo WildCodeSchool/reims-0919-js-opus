@@ -26,7 +26,6 @@ const Offer = ({
     >
       <div className="card">
         <img src={picture} alt={society_name} className="picture" />
-
         <img
           src="https://i.ibb.co/9bsMMn3/coeur-rose-2.png"
           alt="favori"
