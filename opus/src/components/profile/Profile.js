@@ -49,8 +49,9 @@ class Profile extends React.Component {
         <div className="detailProfil">
           <hr className="hrProfile" />
 
-          <p className="textinfo">Mes Informations personnelles</p>
-
+          <Link to="profileDetail">
+            <p className="textinfo">Mes Informations personnelles</p>
+          </Link>
           <hr className="hrProfile" />
           <Link to="/postoffer">
             <p className="textinfo">Publier une annonce</p>

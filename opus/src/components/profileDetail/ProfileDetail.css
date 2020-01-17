@@ -1,0 +1,33 @@
+.photoProfile img {
+  width: 25%;
+  border-radius: 90%;
+}
+
+.photoProfile {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 8%;
+}
+
+.infoOfUser {
+  text-align: start;
+  margin-top: 20%;
+  margin-left: 3%;
+  font-size: 20px;
+}
+
+.infoOfUser p {
+  margin-bottom: 8%;
+  margin-left: 3%;
+}
+
+.buttonReturn {
+  margin-left: 3%;
+  border-radius: 20px;
+  width: 28%;
+  height: 3rem;
+  background-color: #83a5e1;
+  margin-top: 15%;
+}
