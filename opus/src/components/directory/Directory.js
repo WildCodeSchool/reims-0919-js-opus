@@ -85,7 +85,7 @@ class Directory extends React.Component {
     event.preventDefault();
   };
 
-  async resetAllFilter(event) {
+  async resetAllFilter() {
     await this.setState({
       show: false,
       personCountEnabled: false,
@@ -99,7 +99,6 @@ class Directory extends React.Component {
       classFilter: 'containerFilterOn'
     });
     this.getOffers();
-    event.preventDefault();
   }
 
   showFilters = () => {

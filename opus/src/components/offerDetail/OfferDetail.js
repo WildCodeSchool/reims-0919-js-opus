@@ -3,6 +3,12 @@ import './OfferDetail.css';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+  token: state.token
+});
 
 class OfferDetail extends React.Component {
   componentDidMount() {
@@ -18,7 +24,7 @@ class OfferDetail extends React.Component {
       slidesToScroll: 1
     };
 
-    return (
+    return this.props.token ? (
       <div className="divDetail">
         <img
           className="officeImage"
@@ -87,8 +93,10 @@ class OfferDetail extends React.Component {
 
         <input className="validateOffer" type="button" value="Valider" />
       </div>
+    ) : (
+      <Redirect to="/" />
     );
   }
 }
 
-export default OfferDetail;
+export default connect(mapStateToProps)(OfferDetail);
