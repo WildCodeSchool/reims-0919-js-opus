@@ -90,10 +90,11 @@ app.get('/user/offers', verifyToken, (req, res) => {
             res.status(500).send('Error server 500');
           } else {
             connection.query(
-              'SELECT * FROM offer WHERE id_user = ?',
+              'SELECT o.id_offer, o.society_name, o.title, o.picture, o.offer_picture_1, o.offer_picture_2, o.offer_picture_3, o.price, o.capacity, o.offer_description, o.address_street, o.address_city, o.zip_code, o.country, o.id_user, COUNT(b.id_offer) AS reservation FROM offer  AS o LEFT JOIN booking AS b ON o.id_offer = b.id_offer WHERE o.id_user = ? GROUP BY o.id_offer ORDER BY reservation DESC',
               results[0].id_user,
               (err, offerResults) => {
                 if (err) {
+                  console.error(err);
                   res.status(500).send('Error server 500');
                 } else {
                   res.json(offerResults);
@@ -268,7 +269,7 @@ app.post('/users/signin', (req, res) => {
   );
 });
 
-// ADD TO FAVORITE AND GET FAVORITE ///////////////////////////////////////////
+// POST RESERVATION AND GET RESERVATION ///////////////////////////////////////////
 app
   .route('/booking')
   .get(verifyToken, (req, res, next) => {
@@ -357,8 +358,110 @@ app
     });
   });
 
+// POST FAVORITE AND GET FAVORITE ///////////////////////////////////////////
+app
+  .route('/favorites')
+  .get(verifyToken, (req, res) => {
+    jwt.verify(req.token, key, (err, authData) => {
+      if (err) {
+        res.sendStatus(401);
+      } else {
+        connection.query(
+          `SELECT id_user FROM user WHERE email = ?`,
+          authData.email,
+          (err, resultID) => {
+            if (err) {
+              res.status(500).send('Error server 500');
+            } else {
+              let allOffers = [];
+              connection.query(
+                `SELECT * FROM favorite WHERE id_user = ?`,
+                resultID[0].id_user,
+                (err, resultsFavorite) => {
+                  if (err) {
+                    res.status(500).send('Error server 500');
+                  } else {
+                    const send = () => {
+                      res.json(allOffers);
+                    };
+                    Object.values(resultsFavorite).map((offer, index) => {
+                      connection.query(
+                        `SELECT * FROM offer WHERE id_offer = ?`,
+                        offer.id_offer,
+                        (err, result) => {
+                          if (err) {
+                            res.status(500).send('Error server 500');
+                          } else {
+                            allOffers.push(result);
+                            if (index === resultsFavorite.length - 1) {
+                              send();
+                            }
+                          }
+                        }
+                      );
+                    });
+                  }
+                }
+              );
+            }
+          }
+        );
+      }
+    });
+  })
+  .post(verifyToken, (req, res) => {
+    const formData = req.body;
+    jwt.verify(req.token, key, (err, authData) => {
+      if (err) {
+        res.sendStatus(401);
+      } else {
+        connection.query(
+          `SELECT id_user FROM user WHERE email = ?`,
+          authData.email,
+          (err, resultID) => {
+            if (err) {
+              res.status(500).send('Error server 500');
+            } else {
+              connection.query(
+                `INSERT INTO favorite SET ?`,
+                {
+                  id_user: resultID[0].id_user,
+                  id_offer: formData.id_offer
+                },
+                (err, results) => {
+                  if (err) {
+                    res.status(500).send('Error server 500');
+                  } else {
+                    res.status(200).json(formData);
+                  }
+                }
+              );
+            }
+          }
+        );
+      }
+    });
+  });
+
 // SEARCH ID /////////////////////////////////////////////////
 app.get('/offers/:id', (req, res) => {
+  const idSearch = req.params.id;
+  connection.query(
+    `SELECT * from offer where id_offer = ?`,
+    [idSearch],
+    (err, results) => {
+      if (err) {
+        res.status(500).send('Error server 500');
+      } else {
+        res.json(results);
+      }
+    }
+  );
+});
+
+// COUNT RESERVATION ///////////////////////////////////////////
+
+app.get('/reservations', (req, res) => {
   const idSearch = req.params.id;
   connection.query(
     `SELECT * from offer where id_offer = ?`,

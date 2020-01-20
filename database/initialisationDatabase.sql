@@ -9,6 +9,10 @@ CREATE TABLE `user` (
     `password` varchar(255) NOT NULL,
     `city` varchar(100) NOT NULL,
     `country` varchar(50) NOT NULL,
+    `phone_number` varchar(10) NULL,
+    `situation` varchar(200) NULL,
+    `siren_number` varchar(9) NULL,
+    `siret_number` varchar(14) NULL,
     `picture` text NULL
 );
 CREATE TABLE `offer` (
