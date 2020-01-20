@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const mapStateToProps = state => ({
@@ -135,6 +136,11 @@ class OfferDetail extends React.Component {
           value={this.state.reservation_date}
           onChange={this.handleChange}
         />
+        <div>
+          <Link to="/home">
+            <button className="buttonReturn">Retour</button>
+          </Link>
+        </div>
       </div>
     ) : (
       <Redirect to="/" />
