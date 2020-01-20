@@ -62,15 +62,11 @@ class Profile extends React.Component {
 
           <hr className="hrProfile" />
 
-          <p className="textinfo">Mes moyens de paiement</p>
+          <p className="textinfo">Mes réservations</p>
 
           <hr className="hrProfile" />
 
-          <p className="textinfo">Mon historique</p>
-
-          <hr className="hrProfile" />
-
-          <p className="textinfo">Aide</p>
+          <p className="textinfo">CGU CGV</p>
 
           <hr className="hrProfile" />
           <Link to="/">

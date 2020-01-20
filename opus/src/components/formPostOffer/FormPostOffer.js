@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Footer from '../footer/Footer';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './FormPostOffer.css';
 
@@ -182,6 +183,10 @@ class FormPostOffer extends React.Component {
             onClick={this.postNewOffer}
           />
         </form>
+
+        <Link to="/profile">
+          <button className="buttonReturn">Retour</button>
+        </Link>
         <Footer />
       </div>
     );
