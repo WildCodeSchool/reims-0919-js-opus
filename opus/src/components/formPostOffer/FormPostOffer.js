@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Footer from '../footer/Footer';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './FormPostOffer.css';
 
@@ -84,10 +85,10 @@ class FormPostOffer extends React.Component {
   render() {
     return (
       <div className="form-post-offer">
-        <span>Create your offer</span>
+        <span>Publiez votre annonce</span>
 
         <form onSubmit={this.handleSubmit}>
-          <label>Society name</label>
+          <label>Nom de votre société</label>
           <input
             name="society_name"
             type="text"
@@ -95,7 +96,7 @@ class FormPostOffer extends React.Component {
             value={this.state.society_name}
             required
           />
-          <label>Title</label>
+          <label>Titre de l'annonce</label>
           <input
             name="title"
             type="text"
@@ -103,7 +104,7 @@ class FormPostOffer extends React.Component {
             onChange={this.handleChange}
             required
           />
-          <label>Price</label>
+          <label>Prix</label>
           <input
             name="price"
             type="number"
@@ -111,7 +112,7 @@ class FormPostOffer extends React.Component {
             onChange={this.handleChange}
             required
           />
-          <label>Picture</label>
+          <label>Image</label>
           <input
             name="picture"
             type="file"
@@ -120,7 +121,7 @@ class FormPostOffer extends React.Component {
             onChange={this.handleChange}
             required
           />
-          <label>Capacity</label>
+          <label>Capacité</label>
           <input
             name="capacity"
             type="number"
@@ -128,7 +129,7 @@ class FormPostOffer extends React.Component {
             onChange={this.handleChange}
             required
           />
-          <label>Offer description</label>
+          <label>Description de l'offre</label>
           <textarea
             name="offer_description"
             type="textarea"
@@ -138,7 +139,7 @@ class FormPostOffer extends React.Component {
           ></textarea>
           <div className="address">
             <div className="addressbar1">
-              <label>Address</label>
+              <label>Adresse</label>
               <input
                 name="address_street"
                 type="text"
@@ -146,7 +147,7 @@ class FormPostOffer extends React.Component {
                 onChange={this.handleChange}
                 required
               />
-              <label>City</label>
+              <label>Ville</label>
               <input
                 name="address_city"
                 type="text"
@@ -156,7 +157,7 @@ class FormPostOffer extends React.Component {
               />
             </div>
             <div className="addressbar2">
-              <label>Zip code</label>
+              <label>Code Postal</label>
               <input
                 name="zip_code"
                 type="text"
@@ -164,7 +165,7 @@ class FormPostOffer extends React.Component {
                 onChange={this.handleChange}
                 required
               />
-              <label>Country</label>
+              <label>Pays</label>
               <input
                 name="country"
                 type="text"
@@ -178,10 +179,14 @@ class FormPostOffer extends React.Component {
           <input
             className="sendform"
             type="submit"
-            value="Submit Form"
+            value="Confirmer"
             onClick={this.postNewOffer}
           />
         </form>
+
+        <Link to="/profile">
+          <button className="buttonReturn">Retour</button>
+        </Link>
         <Footer />
       </div>
     );
