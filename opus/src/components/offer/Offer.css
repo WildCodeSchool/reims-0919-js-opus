@@ -25,7 +25,7 @@
 .logo-favori {
   position: absolute;
   height: 8vw;
-  width: 6vh;
+  width: 5vh;
   right: 1rem;
   margin-top: 0.4rem;
 }
@@ -33,8 +33,8 @@
 .card-adress {
   font-size: 4vw;
   opacity: 0.7;
-  width: 90vw;
   text-align: left;
+  margin-right: auto;
 }
 
 .info {
@@ -42,7 +42,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 90vw;
+  width: 100%;
 }
 
 .title-info {
@@ -50,23 +50,32 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 90vw;
+  width: 100%;
 }
 
 .title-info p,
 .title-info span {
   font-size: 5vw;
-  margin: 0 0.4rem;
+  margin: 0 0.1rem;
 }
 
 .title-info h3 {
   font-size: 5vw;
   font-weight: normal;
+  margin-right: auto;
 }
 
 .capacityprice {
   display: flex;
   align-items: flex-end;
-  margin-left: auto;
   justify-content: flex-end;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+}
+
+.date {
+  color: #bd3d52;
 }

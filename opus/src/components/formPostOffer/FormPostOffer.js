@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './FormPostOffer.css';
+import { Redirect } from 'react-router-dom';
 
 const mapStateToProps = state => ({
   token: state.token
@@ -24,7 +25,8 @@ class FormPostOffer extends React.Component {
       address_street: '',
       address_city: '',
       zip_code: '',
-      country: ''
+      country: '',
+      isReservationSend: false
     };
   }
 
@@ -62,9 +64,9 @@ class FormPostOffer extends React.Component {
           address_street: '',
           address_city: '',
           zip_code: '',
-          country: ''
+          country: '',
+          isReservationSend: true
         });
-        this.props.history.push('/home');
       })
       .catch(error => {
         console.error(error);
@@ -83,7 +85,9 @@ class FormPostOffer extends React.Component {
   };
 
   render() {
-    return (
+    return this.state.isReservationSend ? (
+      <Redirect to="/home" />
+    ) : (
       <div className="form-post-offer">
         <span>Publiez votre annonce</span>
 

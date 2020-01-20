@@ -5,12 +5,47 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 const mapStateToProps = state => ({
   token: state.token
 });
 
 class OfferDetail extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      reservation_date: ''
+    };
+  }
+
+  makeAReservation = () => {
+    axios
+      .post(
+        'http://localhost:8000/booking',
+        {
+          reservation_date: this.state.reservation_date,
+          id_offer: this.props.location.state.id
+        },
+        {
+          headers: {
+            Authorization: this.props.token
+          }
+        }
+      )
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  handleChange = event => {
+    this.setState({ reservation_date: event.target.value });
+  };
+
   componentDidMount() {
     window.scrollTo(0, 0);
   }
@@ -91,7 +126,15 @@ class OfferDetail extends React.Component {
           </p>
         </div>
 
-        <input className="validateOffer" type="button" value="Valider" />
+        <input className="validateOffer" type="button" value="Réserver" />
+
+        <input
+          className="dateInput"
+          type="text"
+          placeholder="Date"
+          value={this.state.reservation_date}
+          onChange={this.handleChange}
+        />
       </div>
     ) : (
       <Redirect to="/" />

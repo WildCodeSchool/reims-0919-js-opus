@@ -42,7 +42,12 @@ class Profile extends React.Component {
         <div className="imagepro">
           <img
             className="imageProfile"
-            src="https://cdn.pixabay.com/photo/2020/01/07/23/01/sketch-4748895_960_720.jpg"
+            src={
+              this.state.profile_pic
+                ? this.state.profile_pic
+                : 'https://forum.pcastuces.com/img/efa5cf51c0711fafc61e73f90e05bc12.png'
+            }
+            alt="imageProfile"
           />
           <p>{this.state.userName && this.state.userName[0].firstname}</p>
         </div>
@@ -62,7 +67,9 @@ class Profile extends React.Component {
 
           <hr className="hrProfile" />
 
-          <p className="textinfo">Mes réservations</p>
+          <Link to="/myreservations">
+            <p className="textinfo">Mes réservations</p>
+          </Link>
 
           <hr className="hrProfile" />
           <Link to="/cgv">
