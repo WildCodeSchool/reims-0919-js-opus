@@ -20,7 +20,7 @@
   margin-bottom: 0.2rem;
 }
 
-.form-post-offer input {
+.inputPostOffer {
   border-radius: 20px;
   height: 2rem;
   width: 70%;
@@ -68,7 +68,9 @@
 
 .sendform {
   border-radius: 20px;
-  width: 8%;
+  width: 28%;
   height: 3rem;
   background-color: #83a5e1;
+  margin-top: 10%;
+  color: white;
 }

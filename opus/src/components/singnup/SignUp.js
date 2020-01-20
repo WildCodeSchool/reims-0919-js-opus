@@ -4,6 +4,7 @@ import logo from './logo-OPUS.png';
 import './signUp.css';
 import { connect } from 'react-redux';
 import { storeToken } from '../../redux/reducer';
+import { Link } from 'react-router-dom';
 
 const mapDispatchToProps = dispatch => ({
   storeToken: token => dispatch(storeToken(token))
@@ -152,6 +153,9 @@ class SignUp extends Component {
             value="Valider"
             onClick={this.checkPassword}
           />
+          <Link to="/">
+            <button className="buttonReturn">Retour</button>
+          </Link>
         </form>
       </>
     );

@@ -94,6 +94,7 @@ class FormPostOffer extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>Nom de votre société</label>
           <input
+            className="inputPostOffer"
             name="society_name"
             type="text"
             onChange={this.handleChange}
@@ -102,6 +103,7 @@ class FormPostOffer extends React.Component {
           />
           <label>Titre de l'annonce</label>
           <input
+            className="inputPostOffer"
             name="title"
             type="text"
             value={this.state.title}
@@ -110,6 +112,7 @@ class FormPostOffer extends React.Component {
           />
           <label>Prix</label>
           <input
+            className="inputPostOffer"
             name="price"
             type="number"
             value={this.state.price}
@@ -118,6 +121,7 @@ class FormPostOffer extends React.Component {
           />
           <label>Image</label>
           <input
+            className="inputPostOffer"
             name="picture"
             type="file"
             accept="image/png, image/jpeg"
@@ -127,6 +131,7 @@ class FormPostOffer extends React.Component {
           />
           <label>Capacité</label>
           <input
+            className="inputPostOffer"
             name="capacity"
             type="number"
             value={this.state.capacity}
@@ -145,6 +150,7 @@ class FormPostOffer extends React.Component {
             <div className="addressbar1">
               <label>Adresse</label>
               <input
+                className="inputPostOffer"
                 name="address_street"
                 type="text"
                 value={this.state.address_street}
@@ -153,6 +159,7 @@ class FormPostOffer extends React.Component {
               />
               <label>Ville</label>
               <input
+                className="inputPostOffer"
                 name="address_city"
                 type="text"
                 value={this.state.address_city}
@@ -163,6 +170,7 @@ class FormPostOffer extends React.Component {
             <div className="addressbar2">
               <label>Code Postal</label>
               <input
+                className="inputPostOffer"
                 name="zip_code"
                 type="text"
                 value={this.state.zip_code}
@@ -171,6 +179,7 @@ class FormPostOffer extends React.Component {
               />
               <label>Pays</label>
               <input
+                className="inputPostOffer"
                 name="country"
                 type="text"
                 value={this.state.country}
