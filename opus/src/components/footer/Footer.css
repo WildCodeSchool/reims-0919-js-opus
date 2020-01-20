@@ -16,3 +16,7 @@
 .footer img {
   height: 10vw;
 }
+
+.logo_chat {
+  display: none;
+}

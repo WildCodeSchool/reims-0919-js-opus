@@ -18,6 +18,7 @@ class Footer extends React.Component {
             alt="logo favorite"
           />
           <img
+            className="logo_chat"
             src="https://i.ibb.co/NTJ5q2F/Mes-Messages-Rose.png"
             alt="logo chat"
           />

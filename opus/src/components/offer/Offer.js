@@ -8,7 +8,9 @@ const Offer = ({
   address_city,
   title,
   capacity,
-  price
+  price,
+  id,
+  reservation_date
 }) => {
   return (
     <Link
@@ -20,7 +22,8 @@ const Offer = ({
           addressCity: address_city,
           capacityOffice: capacity,
           priceOffer: price,
-          titleOffer: title
+          titleOffer: title,
+          id: id
         }
       }}
     >
@@ -32,7 +35,17 @@ const Offer = ({
           className="logo-favori"
         />
         <div className="info">
-          <p className="card-adress">{address_city}</p>
+          <div className="title">
+            <p className="card-adress">{address_city}</p>
+            <p className="date">
+              {reservation_date &&
+                reservation_date
+                  .replace('T', ' ')
+                  .replace(/[-]/g, '/')
+                  .replace(':00.000Z', '')
+                  .replace(':', 'H')}
+            </p>
+          </div>
           <div className="title-info">
             <h3>{title}</h3>
             <div className="capacityprice">

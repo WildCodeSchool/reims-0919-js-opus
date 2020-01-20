@@ -154,11 +154,12 @@ class Directory extends React.Component {
     if (!isLoaded) {
       return <h1>Loading...</h1>;
     } else {
+      console.log(offers);
       return (
         <>
           <div className="offers-display">
-            {offers.map(({ id, ...otherOfferSelection }, index) => (
-              <Offer key={index} {...otherOfferSelection} />
+            {offers.map(({ id_offer, ...otherOfferSelection }, index) => (
+              <Offer key={index} {...otherOfferSelection} id={id_offer} />
             ))}
           </div>
           <Header
