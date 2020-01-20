@@ -65,9 +65,9 @@ class Profile extends React.Component {
           <p className="textinfo">Mes réservations</p>
 
           <hr className="hrProfile" />
-
-          <p className="textinfo">CGU CGV</p>
-
+          <Link to="/cgv">
+            <p className="textinfo">CGU CGV</p>
+          </Link>
           <hr className="hrProfile" />
           <Link to="/">
             <p className="textinfo">Déconnexion</p>

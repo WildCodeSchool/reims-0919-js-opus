@@ -13,6 +13,7 @@ import Contrats from './components/termes/Contrats';
 import Loading from './components/loading/Loading';
 import Profile from './components/profile/Profile';
 import ProfileDetail from './components/profileDetail/ProfileDetail';
+import CgvInProfile from './components/cgv/CgvInProfile';
 
 const mapStateToProps = state => ({
   token: state.token
@@ -39,6 +40,7 @@ const App = props => {
         <Route exact path="/contrats" component={Contrats} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/profileDetail" component={ProfileDetail} />
+        <Route exact path="/cgv" component={CgvInProfile} />
       </Switch>
     </div>
   );
