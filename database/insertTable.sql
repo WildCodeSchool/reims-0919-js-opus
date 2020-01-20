@@ -125,3 +125,11 @@ INSERT INTO `booking` (
   "1",
   "1"
 );
+
+INSERT INTO `favorite` (
+  id_user,
+  id_offer) VALUES 
+(
+  "1",
+  "1"
+);
