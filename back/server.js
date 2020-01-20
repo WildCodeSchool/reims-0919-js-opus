@@ -268,6 +268,95 @@ app.post('/users/signin', (req, res) => {
   );
 });
 
+// ADD TO FAVORITE AND GET FAVORITE ///////////////////////////////////////////
+app
+  .route('/booking')
+  .get(verifyToken, (req, res, next) => {
+    jwt.verify(req.token, key, (err, authData) => {
+      if (err) {
+        res.sendStatus(401);
+      } else {
+        connection.query(
+          `SELECT id_user FROM user WHERE email = ?`,
+          authData.email,
+          (err, resultID) => {
+            if (err) {
+              res.status(500).send('Error server 500');
+            } else {
+              let allOffers = [];
+              connection.query(
+                `SELECT * FROM booking WHERE id_user = ?`,
+                resultID[0].id_user,
+                (err, resultsBooking) => {
+                  if (err) {
+                    res.status(500).send('Error server 500');
+                  } else {
+                    const send = () => {
+                      res.json(allOffers);
+                    };
+                    Object.values(resultsBooking).map((offer, index) => {
+                      connection.query(
+                        `SELECT * FROM offer WHERE id_offer = ?`,
+                        offer.id_offer,
+                        (err, result) => {
+                          if (err) {
+                            res.status(500).send('Error server 500');
+                          } else {
+                            allOffers.push([
+                              ...result,
+                              resultsBooking[0].reservation_date
+                            ]);
+                            if (index === resultsBooking.length - 1) {
+                              send();
+                            }
+                          }
+                        }
+                      );
+                    });
+                  }
+                }
+              );
+            }
+          }
+        );
+      }
+    });
+  })
+  .post(verifyToken, (req, res) => {
+    const formData = req.body;
+    jwt.verify(req.token, key, (err, authData) => {
+      if (err) {
+        res.sendStatus(401);
+      } else {
+        connection.query(
+          `SELECT id_user FROM user WHERE email = ?`,
+          authData.email,
+          (err, resultID) => {
+            if (err) {
+              res.status(500).send('Error server 500');
+            } else {
+              connection.query(
+                `INSERT INTO booking SET ?`,
+                {
+                  reservation_date: formData.reservation_date,
+                  id_user: resultID[0].id_user,
+                  id_offer: formData.id_offer
+                },
+                (err, results) => {
+                  if (err) {
+                    res.status(500).send('Error server 500');
+                  } else {
+                    res.status(200).json(formData);
+                  }
+                }
+              );
+            }
+          }
+        );
+      }
+    });
+  });
+
 // SEARCH ID /////////////////////////////////////////////////
 app.get('/offers/:id', (req, res) => {
   const idSearch = req.params.id;
