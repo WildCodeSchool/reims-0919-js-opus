@@ -250,7 +250,9 @@ app.post('/users/signup', (req, res) => {
               password: hashpassword,
               city: userAdd.city,
               country: userAdd.country,
-              phone_number: userAdd.phone_number
+              phone_number: userAdd.phone_number,
+              siren_number: userAdd.siren_number,
+              siret_number: userAdd.siret_number
             },
             (err, results) => {
               if (err) {
@@ -352,7 +354,8 @@ app
               connection.query(
                 `INSERT INTO booking SET ?`,
                 {
-                  reservation_date: formData.reservation_date,
+                  start_date: formData.start_date,
+                  end_date: formData.end_date,
                   id_user: resultID[0].id_user,
                   id_offer: formData.id_offer
                 },
