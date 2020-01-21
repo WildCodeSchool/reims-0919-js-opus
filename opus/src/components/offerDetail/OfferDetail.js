@@ -16,7 +16,8 @@ class OfferDetail extends React.Component {
     super(props);
 
     this.state = {
-      reservation_date: ''
+      reservation_date: '',
+      isFavorite: this.props.location.state.is_favorite
     };
   }
 
@@ -40,6 +41,45 @@ class OfferDetail extends React.Component {
       .catch(error => {
         console.error(error);
       });
+  };
+
+  addToFavorite = () => {
+    !this.state.isFavorite
+      ? axios
+          .post(
+            'http://localhost:8000/favorites',
+            {
+              id_offer: this.props.location.state.id
+            },
+            {
+              headers: {
+                Authorization: this.props.token
+              }
+            }
+          )
+          .then(response => {
+            console.log(response);
+            this.setState({
+              isFavorite: true
+            });
+          })
+          .catch(error => {
+            console.error(error);
+          })
+      : axios
+          .delete('http://localhost:8000/favorites', {
+            data: { id_offer: this.props.location.state.id },
+            headers: { Authorization: this.props.token }
+          })
+          .then(response => {
+            console.log(response);
+            this.setState({
+              isFavorite: false
+            });
+          })
+          .catch(error => {
+            console.error(error);
+          });
   };
 
   handleChange = event => {
@@ -127,6 +167,14 @@ class OfferDetail extends React.Component {
         </div>
 
         <input className="validateOffer" type="button" value="Réserver" />
+        <input
+          className="validateOffer"
+          type="button"
+          value={
+            this.state.isFavorite ? 'Ajouté aux favoris' : 'Ajouter aux favoris'
+          }
+          onClick={() => this.addToFavorite()}
+        />
 
         <input
           className="dateInput"

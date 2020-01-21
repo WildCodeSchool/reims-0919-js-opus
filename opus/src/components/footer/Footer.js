@@ -13,10 +13,12 @@ class Footer extends React.Component {
               alt="logo home"
             />
           </Link>
-          <img
-            src="https://i.ibb.co/9bsMMn3/coeur-rose-2.png"
-            alt="logo favorite"
-          />
+          <Link to="/myfavorites">
+            <img
+              src="https://i.ibb.co/9bsMMn3/coeur-rose-2.png"
+              alt="logo favorite"
+            />
+          </Link>
           <img
             className="logo_chat"
             src="https://i.ibb.co/NTJ5q2F/Mes-Messages-Rose.png"

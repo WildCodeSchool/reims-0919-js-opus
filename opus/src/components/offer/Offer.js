@@ -10,7 +10,9 @@ const Offer = ({
   capacity,
   price,
   id,
-  reservation_date
+  start_date,
+  reservation,
+  is_favorite
 }) => {
   return (
     <Link
@@ -23,23 +25,33 @@ const Offer = ({
           capacityOffice: capacity,
           priceOffer: price,
           titleOffer: title,
-          id: id
+          id: id,
+          is_favorite: is_favorite
         }
       }}
     >
       <div className="card">
         <img src={picture} alt={society_name} className="picture" />
         <img
-          src="https://i.ibb.co/9bsMMn3/coeur-rose-2.png"
+          src={
+            is_favorite
+              ? 'https://i.ibb.co/X21DBT8/coeur-rose-plein-png.png'
+              : 'https://i.ibb.co/9bsMMn3/coeur-rose-2.png'
+          }
           alt="favori"
           className="logo-favori"
         />
         <div className="info">
           <div className="title">
             <p className="card-adress">{address_city}</p>
+            <p className="reservations">
+              {reservation !== undefined
+                ? `Réservations : ${reservation}`
+                : null}
+            </p>
             <p className="date">
-              {reservation_date &&
-                reservation_date
+              {start_date &&
+                start_date
                   .replace('T', ' ')
                   .replace(/[-]/g, '/')
                   .replace(':00.000Z', '')
