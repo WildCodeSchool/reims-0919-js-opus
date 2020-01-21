@@ -39,14 +39,14 @@ class ProfileDetail extends React.Component {
   render() {
     return (
       <>
-        <div class="photoProfile">
+        <div className="photoProfile">
           <img
             src="https://cdn.pixabay.com/photo/2020/01/07/23/01/sketch-4748895_960_720.jpg"
             alt="photoProfile"
           />
         </div>
 
-        <div class="infoOfUser">
+        <div className="infoOfUser">
           <p>
             Prénom : {this.state.userInfo && this.state.userInfo[0].firstname}
           </p>

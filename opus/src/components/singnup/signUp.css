@@ -9,23 +9,15 @@
   margin: 3em;
 }
 
-.inputSignUP {
-  margin-bottom: 1em;
-  height: 2.2em;
-  border-radius: 7px;
-  font-size: 1.2em;
-  padding-left: 0.5em;
-}
-
 .readContract {
   margin: 2em 0 2em 0;
 }
 
-.btnSignUp {
-  margin: auto;
+.buttonSignUp {
   height: 2.8em;
   border-radius: 7px;
   background-color: #83a5e1;
   color: #eee;
   font-size: 1.2em;
+  margin-top: 10%;
 }

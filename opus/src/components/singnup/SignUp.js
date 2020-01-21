@@ -5,6 +5,8 @@ import './signUp.css';
 import { connect } from 'react-redux';
 import { storeToken } from '../../redux/reducer';
 import { Link } from 'react-router-dom';
+import FloatingLabel from 'floating-label-react';
+import 'floating-label-react/styles.css';
 
 const mapDispatchToProps = dispatch => ({
   storeToken: token => dispatch(storeToken(token))
@@ -82,73 +84,81 @@ class SignUp extends Component {
         <img className="logoCommunOpus" src={logo} alt="logo OPUS"></img>
 
         <form className="containerFormSignUp" onSubmit={this.handleSubmit}>
-          <input
-            className="inputSignUP"
-            type="text"
-            placeholder="Prénom"
-            onChange={this.handleChange}
-            value={this.state.firstname}
+          <FloatingLabel
+            id="firstname"
+            component="textarea"
             name="firstname"
-          />
-          <input
-            className="inputSignUP"
+            placeholder="Prénom"
             type="text"
-            placeholder="Nom"
+            value={this.state.firstname}
             onChange={this.handleChange}
-            value={this.state.lastname}
+          />
+
+          <FloatingLabel
+            id="lastname"
             name="lastname"
-          />
-          <input
-            className="inputSignUP"
-            type="email"
-            placeholder="Email"
+            placeholder="Nom"
+            type="text"
+            value={this.state.lastname}
             onChange={this.handleChange}
-            value={this.state.email}
+          />
+
+          <FloatingLabel
+            id="email"
             name="email"
-          />
-          <input
-            className="inputSignUP"
-            type="text"
-            placeholder="Ville"
+            placeholder="Email"
+            type="email"
+            value={this.state.email}
             onChange={this.handleChange}
-            value={this.state.city}
+          />
+
+          <FloatingLabel
+            id="city"
             name="city"
-          />
-          <input
-            className="inputSignUP"
+            placeholder="Ville"
             type="text"
-            placeholder="Pays"
+            value={this.state.city}
             onChange={this.handleChange}
-            value={this.state.country}
+          />
+
+          <FloatingLabel
+            id="country"
             name="country"
-          />
-          <input
-            className="inputSignUP"
-            type="password"
-            placeholder="Mot de passe"
-            onChange={this.handleChange}
-            value={this.state.password}
-            name="password"
-          />
-          <input
-            className="inputSignUP"
-            type="password"
-            placeholder="Confirmez votre mot de passe"
-            onChange={this.handleChange}
-            value={this.state.confirm_password}
-            name="confirm_password"
-          />
-          <input
-            className="inputSignUP"
+            placeholder="Pays"
             type="text"
-            placeholder="Société"
+            value={this.state.country}
             onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="password"
+            name="password"
+            placeholder="Mot de passe"
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirmer mot de passe"
+            type="password"
+            value={this.state.confirm_password}
+            onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="societyName"
+            name="societyName"
+            placeholder="Société"
+            type="text"
             value={this.state.society_name}
-            name="society_name"
+            onChange={this.handleChange}
           />
 
           <input
-            className="btnSignUp"
+            className="buttonSignUp"
             type="button"
             value="Valider"
             onClick={this.checkPassword}
