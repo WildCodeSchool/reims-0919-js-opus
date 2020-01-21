@@ -178,6 +178,39 @@ app.post('/offers/add', verifyToken, (req, res) => {
   });
 });
 
+// DELETE OFFER /////////////////////////////////////////////
+app.delete('/offer/delete', verifyToken, (req, res) => {
+  const formData = req.body;
+  jwt.verify(req.token, key, (err, authData) => {
+    if (err) {
+      res.sendStatus(401);
+    } else {
+      connection.query(
+        `SELECT id_user FROM user WHERE email = ?`,
+        authData.email,
+        (err, resultID) => {
+          if (err) {
+            res.status(500).send('Error server 500');
+          } else {
+            connection.query(
+              `DELETE FROM offer WHERE id_user = ? AND id_offer = ?`,
+              [resultID[0].id_user, formData.id_offer],
+              (err, results) => {
+                if (err) {
+                  console.error(err);
+                  res.status(500).send('Error server 500');
+                } else {
+                  res.status(200).send('Annonce retirer des favoris');
+                }
+              }
+            );
+          }
+        }
+      );
+    }
+  });
+});
+
 //GET USER /////////////////////////////////////////////////
 app.get('/users', (req, res) => {
   connection.query('SELECT * from user', (err, results) => {
@@ -216,7 +249,8 @@ app.post('/users/signup', (req, res) => {
               email: userAdd.email,
               password: hashpassword,
               city: userAdd.city,
-              country: userAdd.country
+              country: userAdd.country,
+              phone_number: userAdd.phone_number
             },
             (err, results) => {
               if (err) {
