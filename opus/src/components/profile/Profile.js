@@ -1,12 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Profile.css';
-import Footer from '../footer/Footer';
-import { connect } from 'react-redux';
+
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteToken } from '../../redux/reducer';
+
+import Footer from '../footer/Footer';
+
+import './Profile.css';
 
 const mapStateToProps = state => ({
   token: state.token
+});
+
+const mapDispatchToProps = dispatch => ({
+  deleteToken: token => dispatch(deleteToken(token))
 });
 
 class Profile extends React.Component {
@@ -34,6 +42,10 @@ class Profile extends React.Component {
           userName: data
         })
       );
+  };
+
+  deconnect = () => {
+    this.props.deleteToken(null);
   };
 
   render() {
@@ -84,9 +96,9 @@ class Profile extends React.Component {
 
           <hr className="hrProfile" />
 
-          <Link to="/">
-            <p className="textinfo">Déconnexion</p>
-          </Link>
+          <p className="textinfo" onClick={() => this.deconnect()}>
+            Déconnexion
+          </p>
 
           <hr className="hrProfile" />
         </div>
@@ -96,4 +108,4 @@ class Profile extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
