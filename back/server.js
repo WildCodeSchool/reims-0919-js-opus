@@ -59,7 +59,7 @@ app.get('/offers', verifyToken, (req, res) => {
               commandLine += ' AND price BETWEEN ? AND ? ORDER BY price ASC';
             }
             connection.query(
-              `SELECT * FROM offer WHERE id_user != ? ${commandLine}`,
+              `SELECT o.id_offer, o.society_name, o.title, o.picture, o.offer_picture_1, o.offer_picture_2, o.offer_picture_3, o.price, o.capacity, o.offer_description, o.address_street, o.address_city, o.zip_code, o.country, o.id_user, f.is_favorite FROM offer as o LEFT JOIN favorite AS f ON o.id_offer = f.id_offer WHERE o.id_user != ? ${commandLine}`,
               search,
               (err, offerResults) => {
                 if (err) {
@@ -284,36 +284,15 @@ app
             if (err) {
               res.status(500).send('Error server 500');
             } else {
-              let allOffers = [];
               connection.query(
-                `SELECT * FROM booking WHERE id_user = ?`,
+                `SELECT * FROM offer AS o INNER JOIN booking AS b ON o.id_offer = b.id_offer WHERE b.id_user = ?`,
                 resultID[0].id_user,
-                (err, resultsBooking) => {
+                (err, result) => {
                   if (err) {
+                    console.error(err);
                     res.status(500).send('Error server 500');
                   } else {
-                    const send = () => {
-                      res.json(allOffers);
-                    };
-                    Object.values(resultsBooking).map((offer, index) => {
-                      connection.query(
-                        `SELECT * FROM offer WHERE id_offer = ?`,
-                        offer.id_offer,
-                        (err, result) => {
-                          if (err) {
-                            res.status(500).send('Error server 500');
-                          } else {
-                            allOffers.push([
-                              ...result,
-                              resultsBooking[0].reservation_date
-                            ]);
-                            if (index === resultsBooking.length - 1) {
-                              send();
-                            }
-                          }
-                        }
-                      );
-                    });
+                    res.json(result);
                   }
                 }
               );
@@ -373,33 +352,15 @@ app
             if (err) {
               res.status(500).send('Error server 500');
             } else {
-              let allOffers = [];
               connection.query(
-                `SELECT * FROM favorite WHERE id_user = ?`,
+                `SELECT * FROM offer AS o INNER JOIN favorite AS f ON o.id_offer = f.id_offer WHERE f.id_user = ?`,
                 resultID[0].id_user,
-                (err, resultsFavorite) => {
+                (err, result) => {
                   if (err) {
+                    console.error(err);
                     res.status(500).send('Error server 500');
                   } else {
-                    const send = () => {
-                      res.json(allOffers);
-                    };
-                    Object.values(resultsFavorite).map((offer, index) => {
-                      connection.query(
-                        `SELECT * FROM offer WHERE id_offer = ?`,
-                        offer.id_offer,
-                        (err, result) => {
-                          if (err) {
-                            res.status(500).send('Error server 500');
-                          } else {
-                            allOffers.push(result);
-                            if (index === resultsFavorite.length - 1) {
-                              send();
-                            }
-                          }
-                        }
-                      );
-                    });
+                    res.json(result);
                   }
                 }
               );
@@ -433,6 +394,37 @@ app
                     res.status(500).send('Error server 500');
                   } else {
                     res.status(200).json(formData);
+                  }
+                }
+              );
+            }
+          }
+        );
+      }
+    });
+  })
+  .delete(verifyToken, (req, res) => {
+    const formData = req.body;
+    jwt.verify(req.token, key, (err, authData) => {
+      if (err) {
+        res.sendStatus(401);
+      } else {
+        connection.query(
+          `SELECT id_user FROM user WHERE email = ?`,
+          authData.email,
+          (err, resultID) => {
+            if (err) {
+              res.status(500).send('Error server 500');
+            } else {
+              connection.query(
+                `DELETE FROM favorite WHERE id_user = ? AND id_offer = ?`,
+                [resultID[0].id_user, formData.id_offer],
+                (err, results) => {
+                  if (err) {
+                    console.error(err);
+                    res.status(500).send('Error server 500');
+                  } else {
+                    res.status(200).send('Annonce retirer des favoris');
                   }
                 }
               );

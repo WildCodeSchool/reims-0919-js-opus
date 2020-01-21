@@ -117,11 +117,13 @@ INSERT INTO offer (
 );
 
 INSERT INTO `booking` (
-  reservation_date,
+  start_date,
+  end_date,
   id_user,
   id_offer) VALUES 
 (
   "2020-05-13 12:00:00",
+  "2020-05-13 13:00:00",
   "1",
   "1"
 );
