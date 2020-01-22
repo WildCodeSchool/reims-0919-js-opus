@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Modal from './Modal';
 
@@ -195,7 +196,15 @@ class OfferDetail extends React.Component {
           openModal={this.state.visibleModal}
           closeModal={this.closeModal}
         />
+        <div>
+          <Link to="/home">
+            <button className="buttonReturn">Retour</button>
+          </Link>
+        </div>
+      </div>
+
       </>
+
     ) : (
       <Redirect to="/" />
     );

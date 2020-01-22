@@ -4,6 +4,9 @@ import logo from './logo-OPUS.png';
 import './signUp.css';
 import { connect } from 'react-redux';
 import { storeToken } from '../../redux/reducer';
+import { Link } from 'react-router-dom';
+import FloatingLabel from 'floating-label-react';
+import 'floating-label-react/styles.css';
 
 const mapDispatchToProps = dispatch => ({
   storeToken: token => dispatch(storeToken(token))
@@ -18,7 +21,10 @@ class SignUp extends Component {
     password: '',
     city: '',
     confirm_password: '',
-    country: ''
+    country: '',
+    phone_number: '',
+    siret_number: '',
+    siren_number: ''
   };
 
   postNewUser = () => {
@@ -30,7 +36,10 @@ class SignUp extends Component {
         email: this.state.email,
         password: this.state.password,
         city: this.state.city,
-        country: this.state.country
+        country: this.state.country,
+        phone_number: this.state.phone_number,
+        siren_number: this.state.siren_number,
+        siret_number: this.state.siret_number
       })
       .then(res => {
         res.data.token && this.props.storeToken(res.data.token);
@@ -71,7 +80,10 @@ class SignUp extends Component {
       password: '',
       city: '',
       confirm_password: '',
-      country: ''
+      country: '',
+      phone_number: '',
+      siren_number: '',
+      siret_number: ''
     });
   };
 
@@ -80,79 +92,121 @@ class SignUp extends Component {
       <>
         <img className="logoCommunOpus" src={logo} alt="logo OPUS"></img>
 
+        <h1 className="titleInscription">Inscription</h1>
+
         <form className="containerFormSignUp" onSubmit={this.handleSubmit}>
-          <input
-            className="inputSignUP"
-            type="text"
-            placeholder="Prénom"
-            onChange={this.handleChange}
-            value={this.state.firstname}
+          <FloatingLabel
+            id="firstname"
+            component="textarea"
             name="firstname"
-          />
-          <input
-            className="inputSignUP"
+            placeholder="Prénom"
             type="text"
-            placeholder="Nom"
+            value={this.state.firstname}
             onChange={this.handleChange}
-            value={this.state.lastname}
-            name="lastname"
-          />
-          <input
-            className="inputSignUP"
-            type="email"
-            placeholder="Email"
-            onChange={this.handleChange}
-            value={this.state.email}
-            name="email"
-          />
-          <input
-            className="inputSignUP"
-            type="text"
-            placeholder="Ville"
-            onChange={this.handleChange}
-            value={this.state.city}
-            name="city"
-          />
-          <input
-            className="inputSignUP"
-            type="text"
-            placeholder="Pays"
-            onChange={this.handleChange}
-            value={this.state.country}
-            name="country"
-          />
-          <input
-            className="inputSignUP"
-            type="password"
-            placeholder="Mot de passe"
-            onChange={this.handleChange}
-            value={this.state.password}
-            name="password"
-          />
-          <input
-            className="inputSignUP"
-            type="password"
-            placeholder="Confirmez votre mot de passe"
-            onChange={this.handleChange}
-            value={this.state.confirm_password}
-            name="confirm_password"
-          />
-          <input
-            className="inputSignUP"
-            type="text"
-            placeholder="Société"
-            onChange={this.handleChange}
-            value={this.state.society_name}
-            name="society_name"
           />
 
+          <FloatingLabel
+            id="lastname"
+            name="lastname"
+            placeholder="Nom"
+            type="text"
+            value={this.state.lastname}
+            onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="email"
+            name="email"
+            placeholder="Email"
+            type="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="phone_number"
+            name="phone_number"
+            placeholder="Numéro de téléphone"
+            type="tel"
+            value={this.state.phone_number}
+            onChange={this.handleChange}
+            maxLength="10"
+          />
+
+          <FloatingLabel
+            id="city"
+            name="city"
+            placeholder="Ville"
+            type="text"
+            value={this.state.city}
+            onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="country"
+            name="country"
+            placeholder="Pays"
+            type="text"
+            value={this.state.country}
+            onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="society_name"
+            name="society_name"
+            placeholder="Société"
+            type="text"
+            value={this.state.society_name}
+            onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="siren_number"
+            placeholder="Numéro de siren"
+            name="siren_number"
+            type="text"
+            value={this.state.siren_number}
+            onChange={this.handleChange}
+            maxLength="9"
+          />
+
+          <FloatingLabel
+            id="siret_number"
+            placeholder="Numéro de siret"
+            name="siret_number"
+            type="text"
+            value={this.state.siret_number}
+            onChange={this.handleChange}
+            maxLength="14"
+          />
+
+          <FloatingLabel
+            id="password"
+            name="password"
+            placeholder="Mot de passe"
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="confirm_password"
+            name="confirm_password"
+            placeholder="Confirmer mot de passe"
+            type="password"
+            value={this.state.confirm_password}
+            onChange={this.handleChange}
+          />
           <input
-            className="btnSignUp"
+            className="buttonSignUp"
             type="button"
             value="Valider"
             onClick={this.checkPassword}
           />
         </form>
+        <Link to="/">
+          <button className="buttonReturn">Retour</button>
+        </Link>
       </>
     );
   }

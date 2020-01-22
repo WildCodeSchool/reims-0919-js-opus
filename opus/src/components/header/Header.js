@@ -10,7 +10,7 @@ const Header = props => {
         <input
           className="searchOffer"
           type="search"
-          placeholder="Recherche"
+          placeholder="Recherche Ville"
           value={props.searchCity}
           onChange={props.handleChange}
         />

@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import Footer from '../footer/Footer';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import logo from '../singnup/logo-OPUS.png';
+import FloatingLabel from 'floating-label-react';
+import 'floating-label-react/styles.css';
 
 import './FormPostOffer.css';
 import { Redirect } from 'react-router-dom';
@@ -88,36 +90,37 @@ class FormPostOffer extends React.Component {
     return this.state.isReservationSend ? (
       <Redirect to="/home" />
     ) : (
-      <div className="form-post-offer">
-        <span>Publiez votre annonce</span>
+      <>
+        <img className="logoCommunOpus" src={logo} alt="logo OPUS"></img>
 
-        <form onSubmit={this.handleSubmit}>
-          <label>Nom de votre société</label>
-          <input
+        <h1 className="titlePostOffer">Publiez votre annonce</h1>
+
+        <form className="formPostOffer" onSubmit={this.handleSubmit}>
+          <FloatingLabel
             name="society_name"
+            placeholder="Société"
             type="text"
-            onChange={this.handleChange}
             value={this.state.society_name}
-            required
+            onChange={this.handleChange}
           />
-          <label>Titre de l'annonce</label>
-          <input
-            name="title"
+
+          <FloatingLabel
+            placeholder="Titre de l'annonce"
+            name="offerTitle"
             type="text"
             value={this.state.title}
             onChange={this.handleChange}
             required
           />
-          <label>Prix</label>
-          <input
+          <FloatingLabel
+            placeholder="Prix"
             name="price"
             type="number"
             value={this.state.price}
             onChange={this.handleChange}
             required
           />
-          <label>Image</label>
-          <input
+          <FloatingLabel
             name="picture"
             type="file"
             accept="image/png, image/jpeg"
@@ -125,65 +128,62 @@ class FormPostOffer extends React.Component {
             onChange={this.handleChange}
             required
           />
-          <label>Capacité</label>
-          <input
+          <FloatingLabel
+            placeholder="Capacité"
             name="capacity"
             type="number"
             value={this.state.capacity}
             onChange={this.handleChange}
             required
           />
-          <label>Description de l'offre</label>
-          <textarea
+          <FloatingLabel
+            placeholder="Description de l'offre"
             name="offer_description"
             type="textarea"
             value={this.state.offer_description}
             onChange={this.handleChange}
+            component="textarea"
             required
-          ></textarea>
-          <div className="address">
-            <div className="addressbar1">
-              <label>Adresse</label>
-              <input
-                name="address_street"
-                type="text"
-                value={this.state.address_street}
-                onChange={this.handleChange}
-                required
-              />
-              <label>Ville</label>
-              <input
-                name="address_city"
-                type="text"
-                value={this.state.address_city}
-                onChange={this.handleChange}
-                required
-              />
-            </div>
-            <div className="addressbar2">
-              <label>Code Postal</label>
-              <input
-                name="zip_code"
-                type="text"
-                value={this.state.zip_code}
-                onChange={this.handleChange}
-                required
-              />
-              <label>Pays</label>
-              <input
-                name="country"
-                type="text"
-                value={this.state.country}
-                onChange={this.handleChange}
-                required
-              />
-            </div>
-          </div>
+          />
+
+          <FloatingLabel
+            placeholder="Adresse"
+            name="address_street"
+            type="text"
+            value={this.state.address_street}
+            onChange={this.handleChange}
+            required
+          />
+          <FloatingLabel
+            placeholder="Ville"
+            name="address_city"
+            type="text"
+            value={this.state.address_city}
+            onChange={this.handleChange}
+            required
+          />
+
+          <FloatingLabel
+            placeholder="Code Postal"
+            name="zip_code"
+            type="text"
+            value={this.state.zip_code}
+            onChange={this.handleChange}
+            required
+          />
+          <FloatingLabel
+            placeholder="Pays"
+            name="country"
+            type="text"
+            value={this.state.country}
+            onChange={this.handleChange}
+            required
+          />
 
           <input
-            className="sendform"
+            className="buttonSignUp"
             type="submit"
-            value="Confirmer"
+            value="Valider"
             onClick={this.postNewOffer}
           />
         </form>
@@ -191,8 +191,7 @@ class FormPostOffer extends React.Component {
         <Link to="/profile">
           <button className="buttonReturn">Retour</button>
         </Link>
-        <Footer />
-      </div>
+      </>
     );
   }
 }
