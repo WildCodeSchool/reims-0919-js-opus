@@ -41,17 +41,22 @@ class MyFavorites extends Component {
   render() {
     const { offers } = this.state;
 
-    return (
-      offers && (
-        <>
-          <div className="offers-display-reservation">
-            {offers.map((offerInformation, index) => {
+    return offers && offers.length === 0 ? (
+      <>
+        <h2 className="text-no-reservation">Vous n'avez pas de favoris</h2>
+        <Footer />
+      </>
+    ) : (
+      <>
+        <h2 className="text-reservation">Mes favoris :</h2>
+        <div className="offers-display-reservation">
+          {offers &&
+            offers.map((offerInformation, index) => {
               return <Offer key={index} {...offerInformation} />;
             })}
-          </div>
-          <Footer />
-        </>
-      )
+        </div>
+        <Footer />
+      </>
     );
   }
 }
