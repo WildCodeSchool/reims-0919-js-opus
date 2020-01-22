@@ -124,6 +124,16 @@ class SignUp extends Component {
           />
 
           <FloatingLabel
+            id="phone_number"
+            name="phone_number"
+            placeholder="Numéro de téléphone"
+            type="tel"
+            value={this.state.phone_number}
+            onChange={this.handleChange}
+            maxLength="10"
+          />
+
+          <FloatingLabel
             id="city"
             name="city"
             placeholder="Ville"
@@ -138,24 +148,6 @@ class SignUp extends Component {
             placeholder="Pays"
             type="text"
             value={this.state.country}
-            onChange={this.handleChange}
-          />
-
-          <FloatingLabel
-            id="password"
-            name="password"
-            placeholder="Mot de passe"
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-
-          <FloatingLabel
-            id="confirm_password"
-            name="confirm_password"
-            placeholder="Confirmer mot de passe"
-            type="password"
-            value={this.state.confirm_password}
             onChange={this.handleChange}
           />
 
@@ -189,15 +181,22 @@ class SignUp extends Component {
           />
 
           <FloatingLabel
-            id="phone_number"
-            name="phone_number"
-            placeholder="Numéro de téléphone"
-            type="tel"
-            value={this.state.phone_number}
+            id="password"
+            name="password"
+            placeholder="Mot de passe"
+            type="password"
+            value={this.state.password}
             onChange={this.handleChange}
-            maxLength="10"
           />
 
+          <FloatingLabel
+            id="confirm_password"
+            name="confirm_password"
+            placeholder="Confirmer mot de passe"
+            type="password"
+            value={this.state.confirm_password}
+            onChange={this.handleChange}
+          />
           <input
             className="buttonSignUp"
             type="button"

@@ -1,13 +1,17 @@
-.photoProfile img {
+.titleProfile img {
   width: 25%;
   border-radius: 90%;
 }
 
-.photoProfile {
-  width: 100%;
+.titleProfile h1 {
+  margin-top: 5%;
+}
+
+.titleProfile {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
   margin-top: 8%;
 }
 

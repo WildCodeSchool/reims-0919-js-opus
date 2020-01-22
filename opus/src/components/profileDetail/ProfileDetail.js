@@ -39,24 +39,42 @@ class ProfileDetail extends React.Component {
   render() {
     return (
       <>
-        <div className="photoProfile">
+        <div className="titleProfile">
           <img
-            src="https://cdn.pixabay.com/photo/2020/01/07/23/01/sketch-4748895_960_720.jpg"
+            src={
+              this.state.profile_pic
+                ? this.state.profile_pic
+                : 'https://forum.pcastuces.com/img/efa5cf51c0711fafc61e73f90e05bc12.png'
+            }
             alt="photoProfile"
           />
+
+          <h1>
+            {this.state.userInfo && this.state.userInfo[0].firstname}{' '}
+            {this.state.userInfo && this.state.userInfo[0].lastname}
+          </h1>
         </div>
 
         <div className="infoOfUser">
           <p>
-            Prénom : {this.state.userInfo && this.state.userInfo[0].firstname}
+            Adresse mail : {this.state.userInfo && this.state.userInfo[0].email}
           </p>
-          <p>Nom : {this.state.userInfo && this.state.userInfo[0].lastname}</p>
+          <p>
+            Numéro de téléphone :{' '}
+            {this.state.userInfo && this.state.userInfo[0].phone_number}{' '}
+          </p>
           <p>
             Société :{' '}
             {this.state.userInfo && this.state.userInfo[0].society_name}
           </p>
           <p>
-            Adresse mail : {this.state.userInfo && this.state.userInfo[0].email}
+            Numéro Siren :{' '}
+            {this.state.userInfo && this.state.userInfo[0].siren_number}
+          </p>
+
+          <p>
+            Numéro Siret :{' '}
+            {this.state.userInfo && this.state.userInfo[0].siret_number}
           </p>
         </div>
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Footer from '../footer/Footer';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logo from '../singnup/logo-OPUS.png';
@@ -192,7 +191,6 @@ class FormPostOffer extends React.Component {
         <Link to="/profile">
           <button className="buttonReturn">Retour</button>
         </Link>
-        <Footer />
       </>
     );
   }
