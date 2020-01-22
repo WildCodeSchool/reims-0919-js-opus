@@ -21,7 +21,10 @@ class SignUp extends Component {
     password: '',
     city: '',
     confirm_password: '',
-    country: ''
+    country: '',
+    phone_number: '',
+    siret_number: '',
+    siren_number: ''
   };
 
   postNewUser = () => {
@@ -33,7 +36,10 @@ class SignUp extends Component {
         email: this.state.email,
         password: this.state.password,
         city: this.state.city,
-        country: this.state.country
+        country: this.state.country,
+        phone_number: this.state.phone_number,
+        siren_number: this.state.siren_number,
+        siret_number: this.state.siret_number
       })
       .then(res => {
         res.data.token && this.props.storeToken(res.data.token);
@@ -74,7 +80,10 @@ class SignUp extends Component {
       password: '',
       city: '',
       confirm_password: '',
-      country: ''
+      country: '',
+      phone_number: '',
+      siren_number: '',
+      siret_number: ''
     });
   };
 
@@ -82,6 +91,8 @@ class SignUp extends Component {
     return (
       <>
         <img className="logoCommunOpus" src={logo} alt="logo OPUS"></img>
+
+        <h1 className="titleInscription">Inscription</h1>
 
         <form className="containerFormSignUp" onSubmit={this.handleSubmit}>
           <FloatingLabel
@@ -140,8 +151,8 @@ class SignUp extends Component {
           />
 
           <FloatingLabel
-            id="confirmPassword"
-            name="confirmPassword"
+            id="confirm_password"
+            name="confirm_password"
             placeholder="Confirmer mot de passe"
             type="password"
             value={this.state.confirm_password}
@@ -149,12 +160,42 @@ class SignUp extends Component {
           />
 
           <FloatingLabel
-            id="societyName"
-            name="societyName"
+            id="society_name"
+            name="society_name"
             placeholder="Société"
             type="text"
             value={this.state.society_name}
             onChange={this.handleChange}
+          />
+
+          <FloatingLabel
+            id="siren_number"
+            placeholder="Numéro de siren"
+            name="siren_number"
+            type="text"
+            value={this.state.siren_number}
+            onChange={this.handleChange}
+            maxLength="9"
+          />
+
+          <FloatingLabel
+            id="siret_number"
+            placeholder="Numéro de siret"
+            name="siret_number"
+            type="text"
+            value={this.state.siret_number}
+            onChange={this.handleChange}
+            maxLength="14"
+          />
+
+          <FloatingLabel
+            id="phone_number"
+            name="phone_number"
+            placeholder="Numéro de téléphone"
+            type="tel"
+            value={this.state.phone_number}
+            onChange={this.handleChange}
+            maxLength="10"
           />
 
           <input
@@ -163,10 +204,10 @@ class SignUp extends Component {
             value="Valider"
             onClick={this.checkPassword}
           />
-          <Link to="/">
-            <button className="buttonReturn">Retour</button>
-          </Link>
         </form>
+        <Link to="/">
+          <button className="buttonReturn">Retour</button>
+        </Link>
       </>
     );
   }
