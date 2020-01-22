@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import { connect } from 'react-redux';
-import Offer from '../offer/Offer';
 
-import './MyReservations.css';
+import Offer from '../offer/Offer';
 import Footer from '../footer/Footer';
 
 const mapStateToProps = state => ({
   token: state.token
 });
 
-class MyReservations extends Component {
+class MyOffers extends Component {
   constructor(props) {
     super(props);
 
@@ -20,9 +19,9 @@ class MyReservations extends Component {
     };
   }
 
-  getMyReservations = () => {
+  getMyOffers = () => {
     axios
-      .get(`http://localhost:8000/booking`, {
+      .get(`http://localhost:8000/user/offers`, {
         headers: {
           Authorization: this.props.token
         }
@@ -35,16 +34,16 @@ class MyReservations extends Component {
       );
   };
 
-  componentDidMount() {
-    this.getMyReservations();
-  }
+  componentDidMount = () => {
+    this.getMyOffers();
+  };
 
   render() {
     const { offers } = this.state;
+
     return (
       offers && (
         <>
-          <h2 className="text-reservation">Mes réservations :</h2>
           <div className="offers-display-reservation">
             {offers.map((offerInformation, index) => {
               return <Offer key={index} {...offerInformation} />;
@@ -57,4 +56,4 @@ class MyReservations extends Component {
   }
 }
 
-export default connect(mapStateToProps)(MyReservations);
+export default connect(mapStateToProps)(MyOffers);

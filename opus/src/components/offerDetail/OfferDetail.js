@@ -18,7 +18,8 @@ class OfferDetail extends React.Component {
 
     this.state = {
       reservation_date: '',
-      visibleModal: false
+      visibleModal: false,
+      isFavorite: this.props.location.state.is_favorite
     };
   }
 
@@ -42,6 +43,45 @@ class OfferDetail extends React.Component {
       .catch(error => {
         console.error(error);
       });
+  };
+
+  addToFavorite = () => {
+    !this.state.isFavorite
+      ? axios
+          .post(
+            'http://localhost:8000/favorites',
+            {
+              id_offer: this.props.location.state.id
+            },
+            {
+              headers: {
+                Authorization: this.props.token
+              }
+            }
+          )
+          .then(response => {
+            console.log(response);
+            this.setState({
+              isFavorite: true
+            });
+          })
+          .catch(error => {
+            console.error(error);
+          })
+      : axios
+          .delete('http://localhost:8000/favorites', {
+            data: { id_offer: this.props.location.state.id },
+            headers: { Authorization: this.props.token }
+          })
+          .then(response => {
+            console.log(response);
+            this.setState({
+              isFavorite: false
+            });
+          })
+          .catch(error => {
+            console.error(error);
+          });
   };
 
   handleChange = event => {
@@ -141,6 +181,14 @@ class OfferDetail extends React.Component {
             type="button"
             value="Réserver"
             onClick={this.openModal}
+          />
+          <input
+            className="validateOffer"
+            type="button"
+            value={
+              this.state.isFavorite ? 'Ajouté aux favoris' : 'Ajouter aux favoris'
+            }
+            onClick={() => this.addToFavorite()}
           />
         </div>
         <Modal
