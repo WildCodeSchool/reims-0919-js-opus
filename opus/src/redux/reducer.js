@@ -1,5 +1,7 @@
 const initialState = {
-  token: null
+  token: null,
+  start_date: null,
+  end_date: null
 };
 
 const authReducer = (state = initialState, action) => {

@@ -186,7 +186,9 @@ class OfferDetail extends React.Component {
             className="validateOffer"
             type="button"
             value={
-              this.state.isFavorite ? 'Ajouté aux favoris' : 'Ajouter aux favoris'
+              this.state.isFavorite
+                ? 'Ajouté aux favoris'
+                : 'Ajouter aux favoris'
             }
             onClick={() => this.addToFavorite()}
           />
@@ -194,6 +196,7 @@ class OfferDetail extends React.Component {
         <Modal
           openModal={this.state.visibleModal}
           closeModal={this.closeModal}
+          id={this.props.location.state.id}
         />
       </>
     ) : (

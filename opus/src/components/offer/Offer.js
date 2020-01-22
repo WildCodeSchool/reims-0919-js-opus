@@ -54,7 +54,7 @@ const Offer = ({
                 start_date
                   .replace('T', ' ')
                   .replace(/[-]/g, '/')
-                  .replace(':00.000Z', '')
+                  .replace(/(:[0-9]+\.[0-9]+Z)/g, '')
                   .replace(':', 'H')}
             </p>
           </div>

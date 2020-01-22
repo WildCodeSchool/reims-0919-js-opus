@@ -1,16 +1,47 @@
 import React, { Component } from 'react';
-import './OfferDetail.css';
 import MomentInput from 'react-moment-input';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
-export default class Modal extends Component {
+import './OfferDetail.css';
+
+const mapStateToProps = state => ({
+  token: state.token
+});
+
+class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dateDeb: null,
-      dateFin: null
+      start_date: null,
+      end_date: null
     };
   }
+
+  makeAReservation = () => {
+    axios
+      .post(
+        'http://localhost:8000/booking',
+        {
+          start_date: `${this.state.start_date}`,
+          end_date: `${this.state.end_date}`,
+          id_offer: this.props.id
+        },
+        {
+          headers: {
+            Authorization: this.props.token
+          }
+        }
+      )
+      .then(res => {
+        console.log(res);
+        this.props.closeModal();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   render() {
     return (
@@ -60,7 +91,9 @@ export default class Modal extends Component {
             icon={true}
             enableInputClick={true}
             onClose={date =>
-              this.setState({ dateDeb: moment(date._d).format('L HH:mm:ss') })
+              this.setState({
+                start_date: moment(date._d).format('YYYY/MM/DD HH:mm:ss')
+              })
             }
           />
 
@@ -72,8 +105,23 @@ export default class Modal extends Component {
               TIME: 'Heure',
               DAYS_MON: 'Lun',
               DAYS_TUE: 'Mar',
+              DAYS_WED: 'Mer',
+              DAYS_THU: 'Jeu',
+              DAYS_FRI: 'Ven',
+              DAYS_SAT: 'Sam',
+              DAYS_SUN: 'Dim',
               MONTHS_JANUARY: 'Janvier',
-              MONTHS_OCTOBER: 'Octobre'
+              MONTHS_FEBRUARY: 'Fevrier',
+              MONTHS_MARCH: 'Mars',
+              MONTHS_APRIL: 'Avril',
+              MONTHS_MAY: 'Mai',
+              MONTHS_JUNE: 'Juin',
+              MONTHS_JULY: 'Juillet',
+              MONTHS_AUGUST: 'Aout',
+              MONTHS_SEPTEMBER: 'Septembre',
+              MONTHS_OCTOBER: 'Octobre',
+              MONTHS_NOVEMBER: 'Novembre',
+              MONTHS_DECEMBER: 'Decembre'
             }}
             format="DD-MM-YYYY HH:mm"
             options={true}
@@ -81,12 +129,21 @@ export default class Modal extends Component {
             icon={true}
             enableInputClick={true}
             onClose={date =>
-              this.setState({ dateFin: moment(date._d).format('L HH:mm:ss') })
+              this.setState({
+                end_date: moment(date._d).format('YYYY/MM/DD HH:mm:ss')
+              })
             }
           />
-          <button className="btnValidDate">Enregistrer</button>
+          <button
+            className="btnValidDate"
+            onClick={() => this.makeAReservation()}
+          >
+            Enregistrer
+          </button>
         </div>
       </div>
     );
   }
 }
+
+export default connect(mapStateToProps)(Modal);
