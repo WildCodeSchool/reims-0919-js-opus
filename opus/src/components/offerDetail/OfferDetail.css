@@ -77,3 +77,44 @@ h2 {
   width: 80%;
   margin-top: 5%;
 }
+
+.modal {
+  top: 50%;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: #fcf8f9;
+  border: 1px solid black;
+  box-shadow: 10px 10px 21px 1px rgba(0, 0, 0, 1);
+  padding: 16px;
+  width: 380px;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+  margin-top: 250px;
+}
+
+.btnCloseModale {
+  position: relative;
+  margin-bottom: 2em;
+  left: 12em;
+  color: red;
+  font-weight: bold;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+}
+
+.btnValidDate {
+  margin-top: 2em;
+  display: block;
+  margin: auto;
+  height: 2.8em;
+  border-radius: 7px;
+  background-color: #bd3d52;
+  color: #eee;
+  font-size: 1.2em;
+  width: 80%;
+  margin-top: 5%;
+}

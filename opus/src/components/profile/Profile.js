@@ -1,12 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Profile.css';
-import Footer from '../footer/Footer';
-import { connect } from 'react-redux';
+
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteToken } from '../../redux/reducer';
+
+import Footer from '../footer/Footer';
+
+import './Profile.css';
 
 const mapStateToProps = state => ({
   token: state.token
+});
+
+const mapDispatchToProps = dispatch => ({
+  deleteToken: token => dispatch(deleteToken(token))
 });
 
 class Profile extends React.Component {
@@ -36,6 +44,10 @@ class Profile extends React.Component {
       );
   };
 
+  deconnect = () => {
+    this.props.deleteToken(null);
+  };
+
   render() {
     return (
       <>
@@ -57,13 +69,18 @@ class Profile extends React.Component {
           <Link to="profileDetail">
             <p className="textinfo">Mes Informations personnelles</p>
           </Link>
+
           <hr className="hrProfile" />
+
           <Link to="/postoffer">
             <p className="textinfo">Publier une annonce</p>
           </Link>
+
           <hr className="hrProfile" />
 
-          <p className="textinfo">Mes annonces</p>
+          <Link to="/myoffers">
+            <p className="textinfo">Mes annonces</p>
+          </Link>
 
           <hr className="hrProfile" />
 
@@ -72,13 +89,17 @@ class Profile extends React.Component {
           </Link>
 
           <hr className="hrProfile" />
+
           <Link to="/cgv">
             <p className="textinfo">CGU CGV</p>
           </Link>
+
           <hr className="hrProfile" />
-          <Link to="/">
-            <p className="textinfo">Déconnexion</p>
-          </Link>
+
+          <p className="textinfo" onClick={() => this.deconnect()}>
+            Déconnexion
+          </p>
+
           <hr className="hrProfile" />
         </div>
         <Footer />
@@ -87,4 +108,4 @@ class Profile extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

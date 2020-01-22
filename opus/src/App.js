@@ -15,6 +15,8 @@ import Profile from './components/profile/Profile';
 import MyReservations from './components/myReservations/MyReservations';
 import ProfileDetail from './components/profileDetail/ProfileDetail';
 import CgvInProfile from './components/cgv/CgvInProfile';
+import MyOffers from './components/myOffers/MyOffers';
+import MyFavorites from './components/myFavorites/MyFavorites';
 
 const mapStateToProps = state => ({
   token: state.token
@@ -51,9 +53,18 @@ const App = props => {
             props.token ? <MyReservations /> : <Redirect to="/" />
           }
         />
+        <Route
+          exact
+          path="/myoffers"
+          render={() => (props.token ? <MyOffers /> : <Redirect to="/" />)}
+        />
+        <Route
+          exact
+          path="/myfavorites"
+          render={() => (props.token ? <MyFavorites /> : <Redirect to="/" />)}
+        />
         <Route exact path="/profileDetail" component={ProfileDetail} />
         <Route exact path="/cgv" component={CgvInProfile} />
-
       </Switch>
     </div>
   );
