@@ -59,7 +59,7 @@ app.get('/offers', verifyToken, (req, res) => {
               commandLine += ' AND price BETWEEN ? AND ? ORDER BY price ASC';
             }
             connection.query(
-              `SELECT o.id_offer, o.society_name, o.title, o.picture, o.offer_picture_1, o.offer_picture_2, o.offer_picture_3, o.price, o.capacity, o.offer_description, o.address_street, o.address_city, o.zip_code, o.country, o.id_user, f.is_favorite FROM offer as o LEFT JOIN favorite AS f ON o.id_offer = f.id_offer AND f.id_user = ? WHERE o.id_user != ? ${commandLine}`,
+              `SELECT o.id_offer, o.society_name, o.title, o.picture, o.offer_picture_1, o.offer_picture_2, o.offer_picture_3, o.price, o.capacity, o.offer_description, o.address_street, o.address_city, o.zip_code, o.country, o.id_user, f.is_favorite, u.phone_number FROM offer as o LEFT JOIN favorite AS f ON o.id_offer = f.id_offer AND f.id_user = ? LEFT JOIN user AS u ON u.id_user = o.id_user WHERE o.id_user != ? ${commandLine}`,
               search,
               (err, offerResults) => {
                 if (err) {
@@ -150,6 +150,9 @@ app.post('/offers/add', verifyToken, (req, res) => {
                 society_name: offerAdd.society_name,
                 title: offerAdd.title,
                 picture: offerAdd.picture,
+                offer_picture_1: offerAdd.offer_picture_1,
+                offer_picture_2: offerAdd.offer_picture_2,
+                offer_picture_3: offerAdd.offer_picture_3,
                 price: offerAdd.price,
                 capacity: offerAdd.capacity,
                 offer_description: offerAdd.offer_description,
