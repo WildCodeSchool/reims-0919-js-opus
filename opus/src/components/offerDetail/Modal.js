@@ -20,12 +20,23 @@ class Modal extends Component {
   }
 
   makeAReservation = () => {
+    const firstDate =
+      this.state.start_date.substring(0, 10) +
+      ' ' +
+      (Number(this.state.start_date.substring(11, 13)) + 1) +
+      this.state.start_date.substring(13);
+    const secondDate =
+      this.state.end_date.substring(0, 10) +
+      ' ' +
+      (Number(this.state.end_date.substring(11, 13)) + 1) +
+      this.state.end_date.substring(13);
+
     axios
       .post(
         'http://localhost:8000/booking',
         {
-          start_date: `${this.state.start_date}`,
-          end_date: `${this.state.end_date}`,
+          start_date: `${firstDate}`,
+          end_date: `${secondDate}`,
           id_offer: this.props.id
         },
         {

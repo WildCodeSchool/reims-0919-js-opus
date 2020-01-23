@@ -9,7 +9,7 @@ const Offer = ({
   title,
   capacity,
   price,
-  id,
+  id_offer,
   start_date,
   reservation,
   is_favorite
@@ -25,8 +25,9 @@ const Offer = ({
           capacityOffice: capacity,
           priceOffer: price,
           titleOffer: title,
-          id: id,
-          is_favorite: is_favorite
+          id: id_offer,
+          is_favorite: is_favorite,
+          reservation: reservation
         }
       }}
     >
