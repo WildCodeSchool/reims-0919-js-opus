@@ -106,7 +106,7 @@ class FormPostOffer extends React.Component {
 
           <FloatingLabel
             placeholder="Titre de l'annonce"
-            name="offerTitle"
+            name="title"
             type="text"
             value={this.state.title}
             onChange={this.handleChange}

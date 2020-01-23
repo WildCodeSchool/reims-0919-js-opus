@@ -85,6 +85,24 @@ class OfferDetail extends React.Component {
           });
   };
 
+  deleteOffer = () => {
+    console.log(this.props.location.state.id);
+    axios
+      .delete('http://localhost:8000/offer/delete', {
+        data: {
+          id_offer: this.props.location.state.id
+        },
+        headers: { Authorization: this.props.token }
+      })
+      .then(response => {
+        console.log(response);
+        this.props.history.push('/home');
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
   handleChange = event => {
     this.setState({ reservation_date: event.target.value });
   };
@@ -187,12 +205,18 @@ class OfferDetail extends React.Component {
             className="validateOffer"
             type="button"
             value={
-              this.state.isFavorite
-                ? 'Ajouté aux favoris'
-                : 'Ajouter aux favoris'
+              this.state.isFavorite ? 'Favoris ajouté' : 'Ajouter aux favoris'
             }
             onClick={() => this.addToFavorite()}
           />
+          {this.props.location.state.reservation !== undefined ? (
+            <input
+              className="validateOffer"
+              type="button"
+              value="Supprimer l'annonce"
+              onClick={() => this.deleteOffer()}
+            />
+          ) : null}
         </div>
         <Modal
           openModal={this.state.visibleModal}
@@ -204,10 +228,7 @@ class OfferDetail extends React.Component {
             <button className="buttonReturn">Retour</button>
           </Link>
         </div>
-      </div>
-
       </>
-
     ) : (
       <Redirect to="/" />
     );

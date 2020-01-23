@@ -14,8 +14,7 @@ class Directory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      offers: [],
-      isLoaded: false,
+      offers: null,
       searchCity: '',
       show: false,
       personCountEnabled: false,
@@ -150,15 +149,13 @@ class Directory extends React.Component {
   };
 
   render() {
-    const { offers, isLoaded } = this.state;
-    if (!isLoaded) {
-      return <h1>Loading...</h1>;
-    } else {
-      return (
+    const { offers } = this.state;
+    return (
+      offers && (
         <>
           <div className="offers-display">
             {offers.map(({ id_offer, ...otherOfferSelection }, index) => (
-              <Offer key={index} {...otherOfferSelection} id={id_offer} />
+              <Offer key={index} {...otherOfferSelection} id_offer={id_offer} />
             ))}
           </div>
           <Header
@@ -185,8 +182,8 @@ class Directory extends React.Component {
           />
           <Footer />
         </>
-      );
-    }
+      )
+    );
   }
 }
 
