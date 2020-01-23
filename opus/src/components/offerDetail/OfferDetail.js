@@ -204,10 +204,7 @@ class OfferDetail extends React.Component {
             <button className="buttonReturn">Retour</button>
           </Link>
         </div>
-      </div>
-
       </>
-
     ) : (
       <Redirect to="/" />
     );

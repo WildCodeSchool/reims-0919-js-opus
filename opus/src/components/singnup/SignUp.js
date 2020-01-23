@@ -7,6 +7,8 @@ import { storeToken } from '../../redux/reducer';
 import { Link } from 'react-router-dom';
 import FloatingLabel from 'floating-label-react';
 import 'floating-label-react/styles.css';
+import ModalAlert from '../modalAlert/ModalAlert';
+import { timeout } from 'q';
 
 const mapDispatchToProps = dispatch => ({
   storeToken: token => dispatch(storeToken(token))
@@ -24,7 +26,11 @@ class SignUp extends Component {
     country: '',
     phone_number: '',
     siret_number: '',
-    siren_number: ''
+    siren_number: '',
+    modalVisible: false
+  };
+  openModal = () => {
+    this.setState({ modalVisible: true });
   };
 
   postNewUser = () => {
@@ -54,7 +60,6 @@ class SignUp extends Component {
 
   checkPassword = () => {
     if (this.state.password === this.state.confirm_password) {
-      alert('Inscription effectuer');
       this.postNewUser();
       this.handleSubmit();
     } else {
@@ -201,8 +206,13 @@ class SignUp extends Component {
             className="buttonSignUp"
             type="button"
             value="Valider"
-            onClick={this.checkPassword}
+            onClick={() => {
+              this.openModal();
+              setTimeout(() => this.checkPassword(), 1000);
+            }}
           />
+
+          <ModalAlert openModal={this.state.modalVisible} />
         </form>
         <Link to="/">
           <button className="buttonReturn">Retour</button>
