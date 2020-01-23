@@ -41,6 +41,7 @@ const Offer = ({
     >
       <div className="card">
         <img src={picture} alt={society_name} className="picture" />
+        {/*src={picture && `../../../public/imgByUser/${picture}`}*/}
         <img
           src={
             is_favorite
