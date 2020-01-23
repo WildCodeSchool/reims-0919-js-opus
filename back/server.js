@@ -321,8 +321,8 @@ app
               res.status(500).send('Error server 500');
             } else {
               connection.query(
-                `SELECT * FROM offer AS o INNER JOIN booking AS b ON o.id_offer = b.id_offer WHERE b.id_user = ?`,
-                resultID[0].id_user,
+                `SELECT * FROM offer AS o INNER JOIN booking AS b ON o.id_offer = b.id_offer LEFT JOIN favorite AS f ON o.id_offer = f.id_offer AND f.id_user = ? WHERE b.id_user = ?`,
+                [resultID[0].id_user, resultID[0].id_user],
                 (err, result) => {
                   if (err) {
                     console.error(err);
