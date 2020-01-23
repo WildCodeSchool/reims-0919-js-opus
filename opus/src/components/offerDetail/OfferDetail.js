@@ -133,6 +133,8 @@ class OfferDetail extends React.Component {
           <img
             className="officeImage"
             src={this.props.location.state.offerImage}
+            // src={
+            //   this.props.location.state.offerImage && `../../../public/imgByUser/${this.props.location.state.offerImage}`}
             alt="office"
           />
 

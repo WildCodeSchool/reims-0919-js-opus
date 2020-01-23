@@ -39,7 +39,7 @@ class FormPostOffer extends React.Component {
         {
           society_name: this.state.society_name,
           title: this.state.title,
-          picture: this.state.picture,
+          picture: this.state.picture.substring(12),
           price: this.state.price,
           capacity: this.state.capacity,
           offer_description: this.state.offer_description,
