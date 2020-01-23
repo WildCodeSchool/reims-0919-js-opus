@@ -12,6 +12,10 @@ const Offer = ({
   id_offer,
   start_date,
   reservation,
+  phone_number,
+  offer_picture_1,
+  offer_picture_2,
+  offer_picture_3,
   is_favorite
 }) => {
   return (
@@ -27,7 +31,11 @@ const Offer = ({
           titleOffer: title,
           id: id_offer,
           is_favorite: is_favorite,
-          reservation: reservation
+          reservation: reservation,
+          phone_number: phone_number,
+          offer_picture_1: offer_picture_1,
+          offer_picture_2: offer_picture_2,
+          offer_picture_3: offer_picture_3
         }
       }}
     >

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import logo from '../singnup/logo-OPUS.png';
+import logo from '../singnup/opus.png';
 import './SignIn.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
