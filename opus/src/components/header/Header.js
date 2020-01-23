@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import filter from './fil.png';
 import calendar from './Calendrier 50x50px.png';
+import flecheValidation from './Flèche droite rond rose 50x50px.png';
 
 const Header = props => {
   return (
@@ -17,7 +18,7 @@ const Header = props => {
         <input
           className="arrow-submit"
           type="image"
-          src="https://i.ibb.co/6b7rbrw/Fl-che-droite-rond-rose-50x50px.png"
+          src={flecheValidation}
           alt="arrow"
           onClick={props.handleSubmit}
         />
@@ -57,49 +58,47 @@ const Header = props => {
             ></input>
           </div>
           {/* -------------- Price Min */}
-          <div className="choise">
-            <label className="titleFilter" htmlFor="priceMinEnabled">
-              Prix Mini (€/h)
-            </label>
-            <input
-              className={props.compare}
-              type="text"
-              pattern="[0-9]*"
-              onChange={props.handleChangeMin}
-              onBlur={props.comparePrice}
-              value={props.priceMin}
-              disabled={!props.priceEnabled}
-            ></input>
-            <input
-              type="checkbox"
-              onChange={props.toggleFilter}
-              value={props.priceEnabled}
-              id="priceEnabled"
-              name="priceEnabled"
-              checked={props.isChecked}
-            />
-          </div>
-          <div className="choise">
-            <label className="titleFilter" htmlFor="priceMaxEnabled">
-              Prix Maxi (€/h)
-            </label>
-            <input
-              className={props.compare}
-              type="text"
-              pattern="[0-9]*"
-              onChange={props.handleChangeMax}
-              onBlur={props.comparePrice}
-              value={props.priceMax}
-              disabled={!props.priceEnabled}
-            ></input>
-            <input
-              type="checkbox"
-              onChange={props.toggleFilter}
-              value={props.priceEnabled}
-              id="priceEnabled"
-              name="priceEnabled"
-              checked={props.isChecked}
-            ></input>
+          <div className="choice-price">
+            <div className="choice-price-min-max">
+              <div className="choice-price-min">
+                <label className="titleFilter" htmlFor="priceEnabled">
+                  Prix Mini (€/h)
+                </label>
+                <input
+                  className={props.compare}
+                  type="text"
+                  pattern="[0-9]*"
+                  onChange={props.handleChangeMin}
+                  onBlur={props.comparePrice}
+                  value={props.priceMin}
+                  disabled={!props.priceEnabled}
+                />
+              </div>
+              <div className="choice-price-max">
+                <label className="titleFilter" htmlFor="priceEnabled">
+                  Prix Maxi (€/h)
+                </label>
+                <input
+                  className={props.compare}
+                  type="text"
+                  pattern="[0-9]*"
+                  onChange={props.handleChangeMax}
+                  onBlur={props.comparePrice}
+                  value={props.priceMax}
+                  disabled={!props.priceEnabled}
+                />
+              </div>
+            </div>
+            <div className="choice-price-checkbox">
+              <input
+                type="checkbox"
+                onChange={props.toggleFilter}
+                value={props.priceEnabled}
+                id="priceEnabled"
+                name="priceEnabled"
+                checked={props.isChecked}
+              />
+            </div>
           </div>
           {/* ------------ Calendar */}
           <div className="choiseCalendar">
@@ -115,7 +114,7 @@ const Header = props => {
             ></input>
           </div>
         </div>
-        <div>
+        <div className="filter-reinitialise-button">
           <button className="btnMultiFilter" onClick={props.resetAllFilter}>
             Réinitialiser
           </button>

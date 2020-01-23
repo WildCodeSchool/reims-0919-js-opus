@@ -142,7 +142,7 @@ class OfferDetail extends React.Component {
               <p>{this.props.location.state.addressCity}</p>
               <p>
                 {this.props.location.state.capacityOffice} places{' '}
-                {this.props.location.state.priceOffer}€
+                {this.props.location.state.priceOffer}€/h
               </p>
             </div>
           </div>
@@ -165,21 +165,33 @@ class OfferDetail extends React.Component {
               <div>
                 <img
                   className="officeImage"
-                  src="https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_960_720.jpg"
+                  src={
+                    this.props.location.state.offer_picture_1
+                      ? `../../../public/imgByUser/${this.props.location.state.offer_picture_1}`
+                      : 'https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_960_720.jpg'
+                  }
                   alt="office1"
                 />
               </div>
               <div>
                 <img
                   className="officeImage"
-                  src="https://cdn.pixabay.com/photo/2015/05/15/14/22/conference-room-768441_960_720.jpg"
+                  src={
+                    this.props.location.state.offer_picture_2
+                      ? `../../../public/imgByUser/${this.props.location.state.offer_picture_2}`
+                      : 'https://cdn.pixabay.com/photo/2015/05/15/14/22/conference-room-768441_960_720.jpg'
+                  }
                   alt="office2"
                 />
               </div>
               <div>
                 <img
                   className="officeImage"
-                  src="https://cdn.pixabay.com/photo/2017/03/28/12/06/chairs-2181916_960_720.jpg"
+                  src={
+                    this.props.location.state.offer_picture_3
+                      ? `../../../public/imgByUser/${this.props.location.state.offer_picture_3}`
+                      : 'https://cdn.pixabay.com/photo/2017/03/28/12/06/chairs-2181916_960_720.jpg'
+                  }
                   alt="office3"
                 />
               </div>
@@ -187,11 +199,11 @@ class OfferDetail extends React.Component {
           </div>
 
           <div className="equipements">
-            <h2>Equipements</h2>
+            <h2>Contacts</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam.
+              {this.props.location.state.phone_number !== null
+                ? `Contactez-nous au : ${this.props.location.state.phone_number}`
+                : 'Aucun numéro renseigner'}
             </p>
           </div>
 
