@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './ModalAlert.css';
+import './ConfirmationPostOffer.css';
 
-class ModalAlert extends Component {
+class ConfirmationPostOffer extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,10 +11,10 @@ class ModalAlert extends Component {
         className="modalAlert"
         style={{ display: this.props.openModal ? 'flex' : 'none' }}
       >
-        <p>Inscription Effectuée !</p>
+        <p>Annonce Publiée !</p>
       </div>
     );
   }
 }
 
-export default ModalAlert;
+export default ConfirmationPostOffer;

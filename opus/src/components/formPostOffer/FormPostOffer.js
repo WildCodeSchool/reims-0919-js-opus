@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import logo from '../singnup/logo-OPUS.png';
 import FloatingLabel from 'floating-label-react';
 import 'floating-label-react/styles.css';
-
+import ConfirmationPostOffer from '../confirmationPostOffer/ConfirmationPostOffer';
 import './FormPostOffer.css';
 import { Redirect } from 'react-router-dom';
 
@@ -28,9 +28,14 @@ class FormPostOffer extends React.Component {
       address_city: '',
       zip_code: '',
       country: '',
-      isReservationSend: false
+      isReservationSend: false,
+      modalVisible: false
     };
   }
+
+  openModal = () => {
+    this.setState({ modalVisible: true });
+  };
 
   postNewOffer = () => {
     axios
@@ -106,7 +111,7 @@ class FormPostOffer extends React.Component {
 
           <FloatingLabel
             placeholder="Titre de l'annonce"
-            name="offerTitle"
+            name="title"
             type="text"
             value={this.state.title}
             onChange={this.handleChange}
@@ -170,6 +175,7 @@ class FormPostOffer extends React.Component {
             value={this.state.zip_code}
             onChange={this.handleChange}
             required
+            maxLength="5"
           />
           <FloatingLabel
             placeholder="Pays"
@@ -184,8 +190,12 @@ class FormPostOffer extends React.Component {
             className="buttonSignUp"
             type="submit"
             value="Valider"
-            onClick={this.postNewOffer}
+            onClick={() => {
+              this.openModal();
+              setTimeout(() => this.postNewOffer(), 1000);
+            }}
           />
+          <ConfirmationPostOffer openModal={this.state.modalVisible} />
         </form>
 
         <Link to="/profile">
