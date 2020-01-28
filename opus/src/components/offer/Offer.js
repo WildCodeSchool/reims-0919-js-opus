@@ -40,7 +40,15 @@ const Offer = ({
       }}
     >
       <div className="card">
-        <img src={picture} alt={society_name} className="picture" />
+        <img
+          src={
+            picture.includes('http')
+              ? picture
+              : 'https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_960_720.jpg'
+          }
+          alt={society_name}
+          className="picture"
+        />
         {/*src={picture && `../../../public/imgByUser/${picture}`}*/}
         <img
           src={

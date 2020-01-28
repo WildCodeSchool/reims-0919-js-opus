@@ -44,7 +44,7 @@ class MyReservations extends Component {
     return offers && offers.length === 0 ? (
       <>
         <h2 className="text-no-reservation">
-          Vous n'avez pas effectuer de réservations
+          Vous n'avez pas effectué de réservations
         </h2>
         <Footer />
       </>

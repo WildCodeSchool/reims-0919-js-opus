@@ -5,6 +5,7 @@
 
 .titleProfile h1 {
   margin-top: 5%;
+  margin-left: 0;
 }
 
 .titleProfile {
@@ -31,7 +32,7 @@
   border-radius: 20px;
   width: 28%;
   height: 3rem;
-  background-color: #83a5e1;
+  background-color: #bd3d52;
   margin-top: 10%;
   color: white;
 }

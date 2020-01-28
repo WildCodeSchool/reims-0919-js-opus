@@ -95,7 +95,7 @@ class SignUp extends Component {
   render() {
     return (
       <>
-        <img className="logoAutreOpus" src={logo} alt="logo OPUS"></img>
+        <img className="logoSignup" src={logo} alt="logo OPUS"></img>
 
         <h1 className="titleInscription">Inscription</h1>
 

@@ -43,7 +43,7 @@ class MyOffers extends Component {
 
     return offers && offers.length === 0 ? (
       <>
-        <h2 className="text-no-reservation">Vous n'avez pas créer d'offre</h2>
+        <h2 className="text-no-reservation">Vous n'avez pas créé d'offre</h2>
         <Footer />
       </>
     ) : (
