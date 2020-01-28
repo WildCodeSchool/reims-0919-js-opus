@@ -119,6 +119,7 @@ class OfferDetail extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     const settings = {
       dots: true,
       infinite: true,
@@ -132,7 +133,11 @@ class OfferDetail extends React.Component {
         <div className="divDetail">
           <img
             className="officeImage"
-            src={this.props.location.state.offerImage}
+            src={
+              this.props.location.state.offerImage.includes('http')
+                ? this.props.location.state.offerImage
+                : 'https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_960_720.jpg'
+            }
             // src={
             //   this.props.location.state.offerImage && `../../../public/imgByUser/${this.props.location.state.offerImage}`}
             alt="office"
@@ -151,14 +156,7 @@ class OfferDetail extends React.Component {
 
           <hr className="hrOfferDetail" />
           <div className="divTextDetail">
-            <p className="textDetail">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur.
-            </p>
+          <p className="textDetail">Salle spacieuse pour tout type de réunion, disposant d'un rétroprojecteur et d'une imprimante. </p>
           </div>
           <div className="sliderPhotos">
             <h2>Photos</h2>
@@ -203,9 +201,11 @@ class OfferDetail extends React.Component {
           <div className="equipements">
             <h2>Contacts</h2>
             <p>
-              {this.props.location.state.phone_number !== null
-                ? `Contactez-nous au : ${this.props.location.state.phone_number}`
-                : 'Aucun numéro renseigner'}
+              Contactez-nous au :{' '}
+              {this.props.location.state.phone_number
+                ? this.props.location.state.phone_number
+                : '0345678534'}{' '}
+              <br /> ou par mail : renseignement@office.fr
             </p>
           </div>
 

@@ -125,14 +125,17 @@ class FormPostOffer extends React.Component {
             onChange={this.handleChange}
             required
           />
+          <fieldset className="fieldPicture">
+            <legend>Ajouter 1 à 3 photos</legend>
           <FloatingLabel
             name="picture"
             type="file"
-            accept="image/png, image/jpeg"
+            accept="image/png, image/jpeg, image/jpg"
             value={this.state.picture}
             onChange={this.handleChange}
             required
           />
+          </fieldset>
           <FloatingLabel
             placeholder="Capacité"
             name="capacity"
