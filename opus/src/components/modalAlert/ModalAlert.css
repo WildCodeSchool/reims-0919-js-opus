@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   text-align: center;
-  background-color: #83a5e1;
+  background-color: #bd3d52;
   box-shadow: 10px 10px 21px 1px rgba(0, 0, 0, 1);
   width: 84%;
   box-sizing: border-box;
@@ -17,4 +17,5 @@
   display: flex;
   font-size: 25px;
   color: white;
+  border-radius: 8px;
 }

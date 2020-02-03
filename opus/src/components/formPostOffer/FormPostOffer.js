@@ -133,6 +133,7 @@ class FormPostOffer extends React.Component {
             accept="image/png, image/jpeg, image/jpg"
             value={this.state.picture}
             onChange={this.handleChange}
+            multiple
             required
           />
           </fieldset>

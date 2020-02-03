@@ -59,7 +59,7 @@ app.get('/offers', verifyToken, (req, res) => {
               commandLine += ' AND price BETWEEN ? AND ? ORDER BY price ASC';
             }
             connection.query(
-              `SELECT o.id_offer, o.society_name, o.title, o.picture, o.offer_picture_1, o.offer_picture_2, o.offer_picture_3, o.price, o.capacity, o.offer_description, o.address_street, o.address_city, o.zip_code, o.country, o.id_user, f.is_favorite, u.phone_number FROM offer as o LEFT JOIN favorite AS f ON o.id_offer = f.id_offer AND f.id_user = ? LEFT JOIN user AS u ON u.id_user = o.id_user WHERE o.id_user != ? ${commandLine}`,
+              `SELECT o.id_offer, o.society_name, o.title, o.picture, o.offer_picture_1, o.offer_picture_2, o.offer_picture_3, o.price, o.capacity, o.offer_description, o.address_street, o.address_city, o.zip_code, o.country, o.id_user, f.is_favorite, u.phone_number, u.email FROM offer as o LEFT JOIN favorite AS f ON o.id_offer = f.id_offer AND f.id_user = ? LEFT JOIN user AS u ON u.id_user = o.id_user WHERE o.id_user != ? ${commandLine}`,
               search,
               (err, offerResults) => {
                 if (err) {
@@ -90,7 +90,7 @@ app.get('/user/offers', verifyToken, (req, res) => {
             res.status(500).send('Error server 500');
           } else {
             connection.query(
-              'SELECT o.id_offer, o.society_name, o.title, o.picture, o.offer_picture_1, o.offer_picture_2, o.offer_picture_3, o.price, o.capacity, o.offer_description, o.address_street, o.address_city, o.zip_code, o.country, o.id_user, COUNT(b.id_offer) AS reservation FROM offer  AS o LEFT JOIN booking AS b ON o.id_offer = b.id_offer WHERE o.id_user = ? GROUP BY o.id_offer ORDER BY reservation DESC',
+              'SELECT o.id_offer, o.society_name, o.title, o.picture, o.offer_picture_1, o.offer_picture_2, o.offer_picture_3, o.price, o.capacity, o.offer_description, o.address_street, o.address_city, o.zip_code, o.country, o.id_user, u.phone_number, u.email, COUNT(b.id_offer) AS reservation FROM offer AS o LEFT JOIN user AS u ON u.id_user = o.id_user LEFT JOIN booking AS b ON o.id_offer = b.id_offer WHERE o.id_user = ? GROUP BY o.id_offer ORDER BY reservation DESC',
               results[0].id_user,
               (err, offerResults) => {
                 if (err) {
@@ -133,6 +133,7 @@ app.get('/user', verifyToken, (req, res) => {
 app.post('/offers/add', verifyToken, (req, res) => {
   const offerAdd = req.body;
   jwt.verify(req.token, key, (err, authData) => {
+    console.log(offerAdd)
     if (err) {
       res.sendStatus(401);
     } else {

@@ -96,11 +96,10 @@ class Profile extends React.Component {
 
           <hr className="hrProfile" />
 
-          <p className="textinfo" onClick={() => this.deconnect()}>
+          <button className="buttonDeconnect" onClick={() => this.deconnect()}>
             Déconnexion
-          </p>
+          </button>
 
-          <hr className="hrProfile" />
         </div>
         <Footer />
       </>
