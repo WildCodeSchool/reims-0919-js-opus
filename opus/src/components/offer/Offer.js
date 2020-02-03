@@ -16,7 +16,9 @@ const Offer = ({
   offer_picture_1,
   offer_picture_2,
   offer_picture_3,
-  is_favorite
+  is_favorite,
+  offer_description,
+  email
 }) => {
   return (
     <Link
@@ -35,7 +37,9 @@ const Offer = ({
           phone_number: phone_number,
           offer_picture_1: offer_picture_1,
           offer_picture_2: offer_picture_2,
-          offer_picture_3: offer_picture_3
+          offer_picture_3: offer_picture_3,
+          offer_description,
+          email
         }
       }}
     >
