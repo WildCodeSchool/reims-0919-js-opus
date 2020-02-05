@@ -1,0 +1,38 @@
+.titleProfile img {
+  width: 25%;
+  border-radius: 90%;
+}
+
+.titleProfile h1 {
+  margin-top: 5%;
+  margin-left: 0;
+}
+
+.titleProfile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 8%;
+}
+
+.infoOfUser {
+  text-align: start;
+  margin-top: 20%;
+  margin-left: 3%;
+  font-size: 20px;
+}
+
+.infoOfUser p {
+  margin-bottom: 8%;
+  margin-left: 3%;
+}
+
+.buttonReturn {
+  border-radius: 10px;
+  width: 28%;
+  height: 3rem;
+  background-color: #bd3d52;
+  margin-top: 10%;
+  color: white;
+}

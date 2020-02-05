@@ -1,0 +1,21 @@
+.modalAlert {
+  margin: auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: #bd3d52;
+  box-shadow: 10px 10px 21px 1px rgba(0, 0, 0, 1);
+  width: 84%;
+  box-sizing: border-box;
+  margin-top: 2%;
+  height: 15%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  display: flex;
+  font-size: 25px;
+  color: white;
+  border-radius: 8px;
+}

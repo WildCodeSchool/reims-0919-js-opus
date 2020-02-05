@@ -1,0 +1,38 @@
+.logoCommunOpus {
+  margin-top: 5em;
+  width: 20%;
+}
+
+.titlePostOffer {
+  text-align: center;
+  margin-left: auto;
+  margin-top: 5%;
+}
+
+.sendform {
+  border-radius: 20px;
+  width: 28%;
+  height: 3rem;
+  background-color: #83a5e1;
+  margin-top: 10%;
+  color: white;
+}
+
+.formPostOffer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+form label {
+  font-size: 30px;
+}
+
+.fieldPicture {
+  margin-top: 10%;
+  margin-bottom: 4%;
+  border-radius: 4px;
+}

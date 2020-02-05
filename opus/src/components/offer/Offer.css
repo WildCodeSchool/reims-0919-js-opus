@@ -1,0 +1,88 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0.75rem;
+  border-color: gray;
+  border-style: solid;
+  border-radius: 0.2rem;
+  padding: 0.3rem;
+  height: 40vh;
+  box-shadow: 4px 6px 8px gray;
+}
+
+
+.picture {
+  margin-bottom: auto;
+  width: 100%;
+  height: 80%;
+}
+
+
+.capacity-offer {
+  height: 5vw;
+  margin-right: 0.2rem;
+  width: 3vh;
+}
+
+.logo-favori {
+  position: absolute;
+  height: 8vw;
+  width: 5vh;
+  right: 1rem;
+  margin-top: 0.4rem;
+}
+
+.card-adress {
+  font-size: 4vw;
+  opacity: 0.7;
+  text-align: left;
+  margin-right: auto;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.title-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.title-info p,
+.title-info span {
+  font-size: 5vw;
+  margin: 0 0.1rem;
+}
+
+.title-info h3 {
+  font-size: 5vw;
+  font-weight: normal;
+  margin-right: auto;
+}
+
+.capacityprice {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+}
+
+.date {
+  color: #bd3d52;
+}
+
+.reservations {
+  color: #83a5e1;
+}

@@ -1,0 +1,54 @@
+.imageProfile {
+  width: 16%;
+  border-radius: 90%;
+  border: solid grey;
+  margin-left: 3%;
+}
+
+.imagepro {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 3%;
+  height: 6rem;
+}
+
+.imagepro p {
+  margin-left: 3%;
+  font-size: 25px;
+}
+
+.detailProfil {
+  margin-top: 8%;
+}
+
+.hrProfile {
+  width: 100%;
+}
+
+.textinfo {
+  font-size: 20px;
+  margin-left: 3%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-family: ubuntu, cursive;
+  text-align: start;
+  padding: 4%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.buttonDeconnect {
+  height: 2.8em;
+    border-radius: 7px;
+    background-color: #bd3d52;
+    color: #eee;
+    font-size: 1.2em;
+    margin-top: 10%;
+    width: 50%;
+}
