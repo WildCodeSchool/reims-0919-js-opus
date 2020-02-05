@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import FloatingLabel from 'floating-label-react';
 import 'floating-label-react/styles.css';
 import ModalAlert from '../modalAlert/ModalAlert';
-import { timeout } from 'q';
 
 const mapDispatchToProps = dispatch => ({
   storeToken: token => dispatch(storeToken(token))

@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './ConfirmationPostOffer.css';
 
 class ConfirmationPostOffer extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div

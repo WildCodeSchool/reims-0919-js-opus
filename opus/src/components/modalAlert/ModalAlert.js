@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './ModalAlert.css';
 
 class ModalAlert extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div

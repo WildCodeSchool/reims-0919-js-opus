@@ -133,7 +133,7 @@ app.get('/user', verifyToken, (req, res) => {
 app.post('/offers/add', verifyToken, (req, res) => {
   const offerAdd = req.body;
   jwt.verify(req.token, key, (err, authData) => {
-    console.log(offerAdd)
+    console.log(offerAdd);
     if (err) {
       res.sendStatus(401);
     } else {
