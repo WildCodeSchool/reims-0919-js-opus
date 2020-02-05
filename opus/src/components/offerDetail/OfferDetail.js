@@ -138,7 +138,6 @@ class OfferDetail extends React.Component {
                 ? this.props.location.state.offerImage
                 : 'https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_960_720.jpg'
             }
-           
             alt="office"
           />
 
@@ -155,7 +154,9 @@ class OfferDetail extends React.Component {
 
           <hr className="hrOfferDetail" />
           <div className="divTextDetail">
-  <p className="textDetail">{this.props.location.state.offer_description}</p>
+            <p className="textDetail">
+              {this.props.location.state.offer_description}
+            </p>
           </div>
           <div className="sliderPhotos">
             <h2>Photos</h2>
@@ -165,7 +166,11 @@ class OfferDetail extends React.Component {
                 <img
                   className="officeImage"
                   src={
-                    this.props.location.state.offer_picture_1.includes('http')
+                    this.props.location.state.offer_picture_1 === null
+                      ? 'https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_960_720.jpg'
+                      : this.props.location.state.offer_picture_1.includes(
+                          'http'
+                        )
                       ? this.props.location.state.offer_picture_1
                       : 'https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_960_720.jpg'
                   }
@@ -176,7 +181,11 @@ class OfferDetail extends React.Component {
                 <img
                   className="officeImage"
                   src={
-                    this.props.location.state.offer_picture_2.includes('http')
+                    this.props.location.state.offer_picture_2 === null
+                      ? 'https://cdn.pixabay.com/photo/2015/05/15/14/22/conference-room-768441_960_720.jpg'
+                      : this.props.location.state.offer_picture_2.includes(
+                          'http'
+                        )
                       ? this.props.location.state.offer_picture_2
                       : 'https://cdn.pixabay.com/photo/2015/05/15/14/22/conference-room-768441_960_720.jpg'
                   }
@@ -187,7 +196,11 @@ class OfferDetail extends React.Component {
                 <img
                   className="officeImage"
                   src={
-                    this.props.location.state.offer_picture_3.includes('http')
+                    this.props.location.state.offer_picture_3 === null
+                      ? 'https://cdn.pixabay.com/photo/2017/03/28/12/06/chairs-2181916_960_720.jpg'
+                      : this.props.location.state.offer_picture_3.includes(
+                          'http'
+                        )
                       ? this.props.location.state.offer_picture_3
                       : 'https://cdn.pixabay.com/photo/2017/03/28/12/06/chairs-2181916_960_720.jpg'
                   }
@@ -204,9 +217,11 @@ class OfferDetail extends React.Component {
               {this.props.location.state.phone_number
                 ? this.props.location.state.phone_number
                 : '0345678534'}{' '}
-              <br /> Par mail : {this.props.location.state.email
+              <br /> Par mail :{' '}
+              {this.props.location.state.email
                 ? this.props.location.state.email
-                : 'renseignement@office.fr'} <br/>
+                : 'renseignement@office.fr'}{' '}
+              <br />
               Proposée par la société : {this.props.location.state.societyName}
             </p>
           </div>
